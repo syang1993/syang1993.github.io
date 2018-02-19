@@ -8,30 +8,79 @@
 
 <h2 align="center"> Audio samples from "End-to-End Speech Synthesis with Discrete Representation"</h2>
 
-<h4>Comparing the Tacotron with porposed VQ-based model. All the test texts are from Google's Tacotron <a href="https://google.github.io/tacotron/publications/tacotron/index.html" target=_blank>audio samples</a>. </h4>
-
+<h4>Comparing the Tacotron with porposed VQ-based model. All the test texts are from Google's Tacotron <a href="https://google.github.io/tacotron/publications/tacotron/index.html" target=_blank>audio samples</a>: </h4>
+<blockquote>
 <table>
-<tr><td colspan=2><span>“Does the quick brown fox jump over the lazy dog.”</span></td></tr>
+<tr><td colspan=2><span>1. “Does the quick brown fox jump over the lazy dog.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_2.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_512K_2.wav"></audio></td></tr>
-<tr><td colspan=2><span>“Generative adversarial network or variational auto-encoder.”</span></td></tr>
+<tr><td colspan=2><span>2. “Generative adversarial network or variational auto-encoder.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_1.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_512K_1.wav"></audio></td></tr>
-<tr><td colspan=2><span>“Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.”</span></td></tr>
+<tr><td colspan=2><span>3. “Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_3.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_512K_3.wav"></audio></td></tr>
-<tr><td colspan=2><span>“The buses aren't the problem, they actually provide a solution.”</span></td></tr>
+<tr><td colspan=2><span>4. “The buses aren't the problem, they actually provide a solution.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_4.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_512K_4.wav"></audio></td></tr>
 </table>
+</blockquote>
 
-<h4>Alignment process of Tacotron and VQ-based model for a test sequence: </h4>
+
+<h4>The performace the Tacotron and porposed VQ-based model with small data set:</h4>
+<blockquote>
+<h4> 1 hour training data:</h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>1. “I'm pleased to get through the opening match.”</span></td></tr>
+<tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_1h_1.wav"></audio></td></tr>
+<tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_1h_1.wav"></audio></td></tr>
+<tr><td colspan=2><span>2. “About half the people who are infected also lose weight”</span></td></tr>
+<tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_1h_2.wav"></audio></td></tr>
+<tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_1h_2.wav"></audio></td></tr>
+</table>
+</blockquote>
+<h4> 2 hours training data:</h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>1. “I'm pleased to get through the opening match.”</span></td></tr>
+<tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_2h_1.wav"></audio></td></tr>
+<tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_2h_1.wav"></audio></td></tr>
+<tr><td colspan=2><span>2. “About half the people who are infected also lose weight”</span></td></tr>
+<tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_2h_2.wav"></audio></td></tr>
+<tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_2h_2.wav"></audio></td></tr>
+</table>
+</blockquote>
+<h4> 4 hours training data:</h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>1. “I'm pleased to get through the opening match.”</span></td></tr>
+<tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_4h_1.wav"></audio></td></tr>
+<tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_4h_1.wav"></audio></td></tr>
+<tr><td colspan=2><span>2. “About half the people who are infected also lose weight”</span></td></tr>
+<tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_4h_2.wav"></audio></td></tr>
+<tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_4h_2.wav"></audio></td></tr>
+</table>
+</blockquote>
+
+</blockquote>
+
+<h4>The performace the porposed VQ-based model with different number of K:</h4>
+<blockquote>
+
+</blockquote>
+
+
+
+<h4>Alignment process of Tacotron (left) and VQ-based model (right) for a test sequence: </h4>
+<blockquote>
 <table>
 <tr>
-<td><img src="samples/alignment_process_Tacotron.gif"></td>
-<td><img src="samples/alignment_process_VQ.gif"></td>
+<td><img src="samples/alignment_process_Tacotron.gif" width=500></td>
+<td><img src="samples/alignment_process_VQ.gif"width=500></td>
 </tr>
 </table>
+</blockquote>
 
 
 </body>
