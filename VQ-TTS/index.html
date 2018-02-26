@@ -26,9 +26,12 @@
 </table>
 </blockquote>
 
-<h4>Alignment process of Tacotron (left) and VQ-based model (right) for a test sequence: </h4>
+<h4>Alignment process of Tacotron (left) and VQ-based model (right) for a test sequence: <span style="color:red">the proposed method can learn a good alignment with about 5,000 steps, but 10,000 steps are needed for Tacotron. </span> </h4>
 <blockquote>
 <table>
+<tr>
+<td colspan=2 align='center'><img src="samples/alignment.png"width=500></td>
+</tr>
 <tr>
 <td><img src="samples/alignment_process_Tacotron.gif" width=500></td>
 <td><img src="samples/alignment_process_VQ.gif"width=500></td>
@@ -72,6 +75,18 @@
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_4h_2.wav"></audio></td></tr>
 </table>
 </blockquote>
+<h4> All training data (about 11 hours):</h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>1. “I'm pleased to get through the opening match.”</span></td></tr>
+<tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_11h_1.wav"></audio></td></tr>
+<tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_11h_1.wav"></audio></td></tr>
+<tr><td colspan=2><span>2. “About half the people who are infected also lose weight”</span></td></tr>
+<tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_11h_2.wav"></audio></td></tr>
+<tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_11h_2.wav"></audio></td></tr>
+</table>
+</blockquote>
+
 
 </blockquote>
 
