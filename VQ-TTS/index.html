@@ -7,26 +7,29 @@
 <body>
 
 <h2 align="center"> Audio samples for "Neural End-to-End Speech Synthesis with Discrete Representation"</h2>
+<div><b>Authors:</b> Shan Yang, Dongyan Huang, Lei Xie, Haizhou Li</div>
+<div><b>Abstract:</b> End-to-end speech synthesis aims at producing natural speech directly from text. The challenge is how to model the relationship between text in a discrete space and speech in the continuous feature space. The attention mechanism is used in current end-to-end methods to model such relationship. As speech features take different forms for the same text symbol, text-tospeech
+conversion is apparently a one-to-many mapping. Thus the attention alignment is not easily achieved. Besides, the attention mechanism maximizes the likelihood of each frame with the previous frames of natural speech during training, which is replaced by the predicted previous frame at run-time. Such mismatch leads to accumulated errors along speech generation, that is called exposure bias. To overcome the above two problems, we propose a vector quantization modeling technique, which projects Mel-scale spectrogram of speech into a latent discrete space. The experiments show that end-to-end system with vector quantization learns the attention alignments faster and produces better speech than the traditional end-to-end system. Furthermore, it also works well with less training data.</div>
 
-<h4>Comparing the Tacotron with porposed VQ-based model. All the test texts are from Google's Tacotron <a href="https://google.github.io/tacotron/publications/tacotron/index.html" target=_blank>audio samples</a>: </h4>
+<h4>1. Comparing the Tacotron with porposed VQ-based model. All the test texts are from Google's Tacotron <a href="https://google.github.io/tacotron/publications/tacotron/index.html" target=_blank>audio samples</a>: </h4>
 <blockquote>
 <table>
-<tr><td colspan=2><span>1. “Does the quick brown fox jump over the lazy dog.”</span></td></tr>
+<tr><td colspan=2><span>1.1. “Does the quick brown fox jump over the lazy dog.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_2.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_512K_2.wav"></audio></td></tr>
-<tr><td colspan=2><span>2. “Generative adversarial network or variational auto-encoder.”</span></td></tr>
+<tr><td colspan=2><span>1.2. “Generative adversarial network or variational auto-encoder.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_1.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_512K_1.wav"></audio></td></tr>
-<tr><td colspan=2><span>3. “Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.”</span></td></tr>
+<tr><td colspan=2><span>1.3. “Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_3.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_512K_3.wav"></audio></td></tr>
-<tr><td colspan=2><span>4. “Basilar membrane and otolaryngology are not auto-correlations.”</span></td></tr>
+<tr><td colspan=2><span>1.4. “Basilar membrane and otolaryngology are not auto-correlations.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_4.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_512K_4.wav"></audio></td></tr>
 </table>
 </blockquote>
 
-<h4>Alignment process of Tacotron (left) and VQ-based model (right) for a test sequence: <span style="color:red">the proposed method can learn a good alignment with about 5,000 steps, but 10,000 steps are needed for Tacotron. </span> </h4>
+<h4>2. Alignment process of Tacotron (left) and VQ-based model (right) for a test sequence: <span style="color:red">the proposed method can learn a good alignment with about 5,000 steps, but 10,000 steps are needed for Tacotron. </span> </h4>
 <blockquote>
 <table>
 <tr>
@@ -39,64 +42,64 @@
 </table>
 </blockquote>
 
-<h4>The performace of porposed VQ model in teacher-force mode and inference mode:</h4>
+<h4>3. The performace of porposed VQ model in teacher-force mode and inference mode:</h4>
 <blockquote>
 <table>
-<tr><td colspan=2><span>1. “But beyond the norm can mean different things.”</span></td></tr>
+<tr><td colspan=2><span>3.1. “But beyond the norm can mean different things.”</span></td></tr>
 <tr><td>Teacher-force mode:</td><td><audio controls><source src="samples/audios_vq/teacher_mode_1.wav"></audio></td></tr>
 <tr><td>Inference mode:</td><td><audio controls><source src="samples/audios_vq/infer_mode_1.wav"></audio></td></tr>
-<tr><td colspan=2><span>2. “They are the corporate equivalents of middle-aged men buying Corvettes.”</span></td></tr>
+<tr><td colspan=2><span>3.2. “They are the corporate equivalents of middle-aged men buying Corvettes.”</span></td></tr>
 <tr><td>Teacher-force mode:</td><td><audio controls><source src="samples/audios_vq/teacher_mode_2.wav"></audio></td></tr>
 <tr><td>Inference mode:</td><td><audio controls><source src="samples/audios_vq/infer_mode_2.wav"></audio></td></tr>
-<tr><td colspan=2><span>3. “Such is my passage engaged on the steamer.”</span></td></tr>
+<tr><td colspan=2><span>3.3. “Such is my passage engaged on the steamer.”</span></td></tr>
 <tr><td>Teacher-force mode:</td><td><audio controls><source src="samples/audios_vq/teacher_mode_3.wav"></audio></td></tr>
 <tr><td>Inference mode:</td><td><audio controls><source src="samples/audios_vq/infer_mode_3.wav"></audio></td></tr>
 </table>
 </blockquote>
 
 
-<h4>The performace of the Tacotron and porposed VQ-based model with small data set:</h4>
+<h4>4. The performace of the Tacotron and porposed VQ-based model with small data set:</h4>
 <blockquote>
-<h4> 1 hour training data:</h4>
+<h4> 4.1. One hour training data:</h4>
 <blockquote>
 <table>
-<tr><td colspan=2><span>1. “I'm pleased to get through the opening match.”</span></td></tr>
+<tr><td colspan=2><span>4.1.1. “I'm pleased to get through the opening match.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_1h_1.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_1h_1.wav"></audio></td></tr>
-<tr><td colspan=2><span>2. “About half the people who are infected also lose weight.”</span></td></tr>
+<tr><td colspan=2><span>4.1.2. “About half the people who are infected also lose weight.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_1h_2.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_1h_2.wav"></audio></td></tr>
 </table>
 </blockquote>
-<h4> 2 hours training data:</h4>
+<h4> 4.2. Two hours training data:</h4>
 <blockquote>
 <table>
-<tr><td colspan=2><span>1. “I'm pleased to get through the opening match.”</span></td></tr>
+<tr><td colspan=2><span>4.2.1. “I'm pleased to get through the opening match.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_2h_1.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_2h_1.wav"></audio></td></tr>
-<tr><td colspan=2><span>2. “About half the people who are infected also lose weight.”</span></td></tr>
+<tr><td colspan=2><span>4.2.2. “About half the people who are infected also lose weight.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_2h_2.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_2h_2.wav"></audio></td></tr>
 </table>
 </blockquote>
-<h4> 4 hours training data:</h4>
+<h4> 4.3. Four hours training data:</h4>
 <blockquote>
 <table>
-<tr><td colspan=2><span>1. “I'm pleased to get through the opening match.”</span></td></tr>
+<tr><td colspan=2><span>4.3.1. “I'm pleased to get through the opening match.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_4h_1.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_4h_1.wav"></audio></td></tr>
-<tr><td colspan=2><span>2. “About half the people who are infected also lose weight.”</span></td></tr>
+<tr><td colspan=2><span>4.3.2. “About half the people who are infected also lose weight.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_4h_2.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_4h_2.wav"></audio></td></tr>
 </table>
 </blockquote>
-<h4> All training data (about 11 hours):</h4>
+<h4> 4.4. All training data (about 11 hours):</h4>
 <blockquote>
 <table>
-<tr><td colspan=2><span>1. “I'm pleased to get through the opening match.”</span></td></tr>
+<tr><td colspan=2><span>4.4.1. “I'm pleased to get through the opening match.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_11h_1.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_11h_1.wav"></audio></td></tr>
-<tr><td colspan=2><span>2. “About half the people who are infected also lose weight”</span></td></tr>
+<tr><td colspan=2><span>4.4.2. “About half the people who are infected also lose weight”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_tacotron/tacotron_11h_2.wav"></audio></td></tr>
 <tr><td>Proposed:</td><td><audio controls><source src="samples/audios_vq/vq_11h_2.wav"></audio></td></tr>
 </table>
@@ -105,10 +108,10 @@
 
 </blockquote>
 
-<h4>The performace of the porposed VQ-based model with different number of K:</h4>
+<h4>5. The performace of the porposed VQ-based model with different number of K:</h4>
 <blockquote>
 <table>
-<tr><td colspan=2><span>1. “Does the quick brown fox jump over the lazy dog.”</span></td></tr>
+<tr><td colspan=2><span>5.1. “Does the quick brown fox jump over the lazy dog.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_vq/different_k/tacotron_2.wav"></audio></td></tr>
 <tr><td>K=128:</td><td><audio controls><source src="samples/audios_vq/different_k/vq_128_2.wav"></audio></td></tr>
 <tr><td>K=256:</td><td><audio controls><source src="samples/audios_vq/different_k/vq_256_2.wav"></audio></td></tr>
@@ -119,7 +122,7 @@
 <br/>
 
 <table>
-<tr><td colspan=2><span>2. “What would be good about that.”</span></td></tr>
+<tr><td colspan=2><span>5.2. “What would be good about that.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_vq/different_k/tacotron_1.wav"></audio></td></tr>
 <tr><td>K=128:</td><td><audio controls><source src="samples/audios_vq/different_k/vq_128_1.wav"></audio></td></tr>
 <tr><td>K=256:</td><td><audio controls><source src="samples/audios_vq/different_k/vq_256_1.wav"></audio></td></tr>
@@ -130,7 +133,7 @@
 <br/>
 <table>
 
-<tr><td colspan=2><span>3. “President Trump met with other leaders at the Group of 20 conference.”</span></td></tr>
+<tr><td colspan=2><span>5.3. “President Trump met with other leaders at the Group of 20 conference.”</span></td></tr>
 <tr><td>Tacotron:</td><td><audio controls><source src="samples/audios_vq/different_k/tacotron_3.wav"></audio></td></tr>
 <tr><td>K=128:</td><td><audio controls><source src="samples/audios_vq/different_k/vq_128_3.wav"></audio></td></tr>
 <tr><td>K=256:</td><td><audio controls><source src="samples/audios_vq/different_k/vq_256_3.wav"></audio></td></tr>
