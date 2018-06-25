@@ -36,10 +36,20 @@ audio {
   <ul>
     <li>Samples are from a model trained with the
       <a href="https://www.synsig.org/index.php/Blizzard_Challenge_2013">Blizzard 2013</a> database. This year Challenge provides about 200 hours unsegmented speech and 9741 segmented waveforms. I did all the experiments based the 9741 segmented waveforms since it's hard for me to split the unsegmented data (Google's paper used 147 hours data read by the 2013 Blizzard Challenge speaker).</li>
-
-    <li>The first column is generated speech with global style token(GST) after 200K steps, which uses the target speech(column 2) as reference audio.</li>
+    <li>Main hyperparams: 
+        <ul>
+          <li>ourput_perstep=2</li>
+          <li>batch_size=32</li>
+          <li>use_cmudict=False</li>
+          <li>num_gst=10</li>
+          <li>training steps: 200K</li>
+        </ul>
+    </li>
+    <li>The first column is generated speech with global style token(GST) after 200K steps, which uses the target speech (column 2) as reference audio. For random texts, column 1 and 2 are None.</li>
+    <li>The second column is arget reference audio (if exists).</li>
     <li>The third column is generated speech with GST using random reference audio.</li>
     <li>The last column is the random reference audio.</li>
+    <li>More samples are coming soon.</li>
   </ul>
 
   <p class="sample">
@@ -47,12 +57,12 @@ audio {
     <blockquote>
     <table>
     <tr>
-    <td>With GST (using target reference audio)</td><td>target reference audio</td>
-    <td>With GST (using random reference)</td><td>random reference audio</td>
+    <td align=center width=300>With GST (using target reference)</td><td align=center width=300>target reference audio</td>
+    <td align=center width=300>With GST (using random reference)</td><td align=center width=300>random reference audio</td>
     </tr>
     <tr>
-    <td rows=2><audio src="" controls=""></audio></td>
-    <td rows=2><audio src="" controls=""></audio></td>
+    <td rowspan=2 align=center>None</td>
+    <td rowspan=2 align=center>None</td>
     <td><audio src="style-samples/1/3.wav" controls=""></audio></td>
     <td><audio src="style-samples/reference_audio-1.wav" controls=""></audio><br></td>
     </tr>
@@ -69,18 +79,16 @@ audio {
     <blockquote>
     <table>
     <tr>
-    <td>With GST (using target reference audio)</td><td>target reference audio</td>
-    <td>With GST (using random reference)</td><td>random reference audio</td>
+    <td align=center width=300>With GST (using target reference)</td><td align=center width=300>target reference audio</td>
+    <td align=center width=300>With GST (using random reference)</td><td align=center width=300>random reference audio</td>
     </tr>
     <tr>
-    <td><audio src="" controls=""></audio></td>
-    <td><audio src="" controls=""></audio></td>
+    <td rowspan=2 align=center>None</td>
+    <td rowspan=2 align=center>None</td>
     <td><audio src="style-samples/1/4.wav" controls=""></audio></td>
     <td><audio src="style-samples/reference_audio-1.wav" controls=""></audio><br></td>
     </tr>
     <tr>
-    <td><audio src="" controls=""></audio></td>
-    <td><audio src="" controls=""></audio></td>
     <td><audio src="style-samples/2/4.wav" controls=""></audio></td>
     <td><audio src="style-samples/reference_audio-2.wav" controls=""></audio><br></td>
     </tr>
@@ -92,18 +100,16 @@ audio {
     <blockquote>
     <table>
     <tr>
-    <td>With GST (using target reference audio)</td><td>target reference audio</td>
-    <td>With GST (using random reference)</td><td>random reference audio</td>
+    <td align=center width=300>With GST (using target reference)</td><td align=center width=300>target reference audio</td>
+    <td align=center width=300>With GST (using random reference)</td><td align=center width=300>random reference audio</td>
     </tr>
     <tr>
-    <td><audio src="" controls=""></audio></td>
-    <td><audio src="" controls=""></audio></td>
+    <td rowspan=2 align=center>None</td>
+    <td rowspan=2 align=center>None</td>
     <td><audio src="style-samples/1/5.wav" controls=""></audio></td>
     <td><audio src="style-samples/reference_audio-1.wav" controls=""></audio><br></td>
     </tr>
     <tr>
-    <td><audio src="" controls=""></audio></td>
-    <td><audio src="" controls=""></audio></td>
     <td><audio src="style-samples/2/5.wav" controls=""></audio></td>
     <td><audio src="style-samples/reference_audio-2.wav" controls=""></audio><br></td>
     </tr>
@@ -115,18 +121,16 @@ audio {
     <blockquote>
     <table>
     <tr>
-    <td>With GST (using target reference audio)</td><td>target reference audio</td>
-    <td>With GST (using random reference)</td><td>random reference audio</td>
+    <td align=center width=300>With GST (using target reference)</td><td align=center width=300>target reference audio</td>
+    <td align=center width=300>With GST (using random reference)</td><td align=center width=300>random reference audio</td>
     </tr>
     <tr>
-    <td><audio src="" controls=""></audio></td>
-    <td><audio src="" controls=""></audio></td>
+    <td rowspan=2 align=center>None</td>
+    <td rowspan=2 align=center>None</td>
     <td><audio src="style-samples/1/1.wav" controls=""></audio></td>
     <td><audio src="style-samples/reference_audio-1.wav" controls=""></audio><br></td>
     </tr>
     <tr>
-    <td><audio src="" controls=""></audio></td>
-    <td><audio src="" controls=""></audio></td>
     <td><audio src="style-samples/2/1.wav" controls=""></audio></td>
     <td><audio src="style-samples/reference_audio-2.wav" controls=""></audio><br></td>
     </tr>
@@ -139,18 +143,16 @@ audio {
     <blockquote>
     <table>
     <tr>
-    <td>With GST (using target reference audio)</td><td>target reference audio</td>
-    <td>With GST (using random reference)</td><td>random reference audio</td>
+    <td align=center width=300>With GST (using target reference)</td><td align=center width=300>target reference audio</td>
+    <td align=center width=300>With GST (using random reference)</td><td align=center width=300>random reference audio</td>
     </tr>
     <tr>
-    <td><audio src="" controls=""></audio></td>
-    <td><audio src="" controls=""></audio></td>
+    <td rowspan=2 align=center>None</td>
+    <td rowspan=2 align=center>None</td>
     <td><audio src="style-samples/1/2.wav" controls=""></audio></td>
     <td><audio src="style-samples/reference_audio-1.wav" controls=""></audio><br></td>
     </tr>
     <tr>
-    <td><audio src="" controls=""></audio></td>
-    <td><audio src="" controls=""></audio></td>
     <td><audio src="style-samples/2/2.wav" controls=""></audio></td>
     <td><audio src="style-samples/reference_audio-2.wav" controls=""></audio><br></td>
     </tr>
