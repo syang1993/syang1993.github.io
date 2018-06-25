@@ -37,101 +37,125 @@ audio {
     <li>Samples are from a model trained with the
       <a href="https://www.synsig.org/index.php/Blizzard_Challenge_2013">Blizzard 2013</a> database. This year Challenge provides about 200 hours unsegmented speech and 9741 segmented waveforms. I did all the experiments based the 9741 segmented waveforms since it's hard for me to split the unsegmented data (Google's paper used 147 hours data read by the 2013 Blizzard Challenge speaker).</li>
 
-    <li>The first column is generated speech with global style token(GST) after 100K steps.</li>
-    <li>The second column is generated speech with GSTs after 200K steps.</li>
-    <li>The third column is generated speech without GSTs(only reference encoder) after 150K steps.</li>
-    <li>The last column is the reference audio.</li>
+    <li>The first column is generated speech with global style token(GST) after 200K steps, which uses the target speech(column 2) as reference audio.</li>
+    <li>The third column is generated speech with GST using random reference audio.</li>
+    <li>The last column is the random reference audio.</li>
   </ul>
 
   <p class="sample">
-    1. All the horses would come to him , but I think we were his favorites.
+    1. You may be out of my sight, but never out of my mind.
     <blockquote>
     <table>
     <tr>
-    <td>With GST (100K step)</td><td>With GST (200K step)</td>
-    <td>Without GST (150K step)</td><td>reference audio</td>
+    <td>With GST (using target reference audio)</td><td>target reference audio</td>
+    <td>With GST (using random reference)</td><td>random reference audio</td>
     </tr>
     <tr>
-    <td><audio src="syns/gst/eval-100000_ref-CA-BB-02-01.wav" controls=""></audio></td>
-    <td><audio src="syns/gst/eval-200000_ref-CA-BB-02-01.wav" controls=""></audio></td>
-    <td><audio src="syns/nogst/eval-150000_ref-CA-BB-02-01.wav" controls=""></audio></td>
-    <td><audio src="refs/CA-BB-02-01.wav" controls=""></audio><br></td>
+    <td rows=2><audio src="" controls=""></audio></td>
+    <td rows=2><audio src="" controls=""></audio></td>
+    <td><audio src="style-samples/1/3.wav" controls=""></audio></td>
+    <td><audio src="style-samples/reference_audio-1.wav" controls=""></audio><br></td>
     </tr>
     <tr>
-    <td><audio src="syns/gst/eval-100000_ref-CA-BB-18-06.wav" controls=""></audio></td>
-    <td><audio src="syns/gst/eval-200000_ref-CA-BB-18-06.wav" controls=""></audio></td>
-    <td><audio src="syns/nogst/eval-150000_ref-CA-BB-18-06.wav" controls=""></audio></td>
-    <td><audio src="refs/CA-BB-18-06.wav" controls=""></audio><br></td>
-    </tr>
-    <tr>
-    <td><audio src="syns/gst/eval-100000_ref-CA-BB-02-13.wav" controls=""></audio></td>
-    <td><audio src="syns/gst/eval-200000_ref-CA-BB-02-13.wav" controls=""></audio></td>
-    <td><audio src="syns/nogst/eval-150000_ref-CA-BB-02-13.wav" controls=""></audio></td>
-    <td><audio src="refs/CA-BB-02-13.wav" controls=""></audio><br></td>
-    </tr>
-    <tr>
-    <td><audio src="syns/gst/eval-100000_ref-CA-BB-01-37.wav" controls=""></audio></td>
-    <td><audio src="syns/gst/eval-200000_ref-CA-BB-01-37.wav" controls=""></audio></td>
-    <td><audio src="syns/nogst/eval-150000_ref-CA-BB-01-37.wav" controls=""></audio></td>
-    <td><audio src="refs/CA-BB-01-37.wav" controls=""></audio><br></td>
-    </tr>
-    <tr>
-    <td><audio src="syns/gst/eval-100000_ref-CA-MP2-05-118.wav" controls=""></audio></td>
-    <td><audio src="syns/gst/eval-200000_ref-CA-MP2-05-118.wav" controls=""></audio></td>
-    <td><audio src="syns/nogst/eval-150000_ref-CA-MP2-05-118.wav" controls=""></audio></td>
-    <td><audio src="refs/CA-MP2-05-118.wav" controls=""></audio><br></td>
+    <td><audio src="style-samples/2/3.wav" controls=""></audio></td>
+    <td><audio src="style-samples/reference_audio-2.wav" controls=""></audio><br></td>
     </tr>
     </table>
     </blockquote>
   </p>
-  
-  
+
   <p class="sample">
-    2. The oldest of the colts raised his head , pricked his ears , and said , There are the hounds.
+    2. I will think of you every step of the way.
     <blockquote>
     <table>
     <tr>
-    <td>With GST (100K step)</td><td>With GST (200K step)</td>
-    <td>Without GST (150K step)</td><td>reference audio</td>
-    <tr>
-    <td><audio src="syns/gst/eval-100000_ref-CA-BB-02-10.wav" controls=""></audio></td>
-    <td><audio src="syns/gst/eval-200000_ref-CA-BB-02-10.wav" controls=""></audio></td>
-    <td><audio src="syns/nogst/eval-150000_ref-CA-BB-02-10.wav" controls=""></audio></td>
-    <td><audio src="refs/CA-BB-02-10.wav" controls=""></audio><br></td>
+    <td>With GST (using target reference audio)</td><td>target reference audio</td>
+    <td>With GST (using random reference)</td><td>random reference audio</td>
     </tr>
     <tr>
-    <td><audio src="syns/gst/eval-100000_ref-CA-MP3-04-056.wav" controls=""></audio></td>
-    <td><audio src="syns/gst/eval-200000_ref-CA-MP3-04-056.wav" controls=""></audio></td>
-    <td><audio src="syns/nogst/eval-150000_ref-CA-MP3-04-056.wav" controls=""></audio></td>
-    <td><audio src="refs/CA-MP3-04-056.wav" controls=""></audio><br></td>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="style-samples/1/4.wav" controls=""></audio></td>
+    <td><audio src="style-samples/reference_audio-1.wav" controls=""></audio><br></td>
+    </tr>
+    <tr>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="style-samples/2/4.wav" controls=""></audio></td>
+    <td><audio src="style-samples/reference_audio-2.wav" controls=""></audio><br></td>
+    </tr>
+    </table>
+    </blockquote>
+  </p>
+   <p class="sample">
+    3. Great minds have purpose, others have wishes.
+    <blockquote>
+    <table>
+    <tr>
+    <td>With GST (using target reference audio)</td><td>target reference audio</td>
+    <td>With GST (using random reference)</td><td>random reference audio</td>
+    </tr>
+    <tr>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="style-samples/1/5.wav" controls=""></audio></td>
+    <td><audio src="style-samples/reference_audio-1.wav" controls=""></audio><br></td>
+    </tr>
+    <tr>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="style-samples/2/5.wav" controls=""></audio></td>
+    <td><audio src="style-samples/reference_audio-2.wav" controls=""></audio><br></td>
+    </tr>
+    </table>
+    </blockquote>
+  </p>
+   <p class="sample">
+    4. Life is half spent before we know what it is.
+    <blockquote>
+    <table>
+    <tr>
+    <td>With GST (using target reference audio)</td><td>target reference audio</td>
+    <td>With GST (using random reference)</td><td>random reference audio</td>
+    </tr>
+    <tr>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="style-samples/1/1.wav" controls=""></audio></td>
+    <td><audio src="style-samples/reference_audio-1.wav" controls=""></audio><br></td>
+    </tr>
+    <tr>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="style-samples/2/1.wav" controls=""></audio></td>
+    <td><audio src="style-samples/reference_audio-2.wav" controls=""></audio><br></td>
     </tr>
     </table>
     </blockquote>
   </p>
 
- <p class="sample">
-    3. He was gone again, glad to get away even from Fanny.
+   <p class="sample">
+    5. Whatever is worth doing is worth doing well.
     <blockquote>
     <table>
     <tr>
-    <td>With GST (100K step)</td><td>With GST (200K step)</td>
-    <td>Without GST (150K step)</td><td>reference audio</td>
-    <tr>
-    <td><audio src="syns/gst/eval-100000_ref-CA-MP1-07-021.wav" controls=""></audio></td>
-    <td><audio src="syns/gst/eval-200000_ref-CA-MP1-07-021.wav" controls=""></audio></td>
-    <td><audio src="syns/nogst/eval-150000_ref-CA-MP1-07-021.wav" controls=""></audio></td>
-    <td><audio src="refs/CA-MP1-07-021.wav" controls=""></audio><br></td>
+    <td>With GST (using target reference audio)</td><td>target reference audio</td>
+    <td>With GST (using random reference)</td><td>random reference audio</td>
     </tr>
     <tr>
-    <td><audio src="syns/gst/eval-100000_ref-CA-MP1-07-098.wav" controls=""></audio></td>
-    <td><audio src="syns/gst/eval-200000_ref-CA-MP1-07-098.wav" controls=""></audio></td>
-    <td><audio src="syns/nogst/eval-150000_ref-CA-MP1-07-098.wav" controls=""></audio></td>
-    <td><audio src="refs/CA-MP1-07-098.wav" controls=""></audio><br></td>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="style-samples/1/2.wav" controls=""></audio></td>
+    <td><audio src="style-samples/reference_audio-1.wav" controls=""></audio><br></td>
+    </tr>
+    <tr>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="" controls=""></audio></td>
+    <td><audio src="style-samples/2/2.wav" controls=""></audio></td>
+    <td><audio src="style-samples/reference_audio-2.wav" controls=""></audio><br></td>
     </tr>
     </table>
     </blockquote>
   </p>
-
-
 
 </body></html>
