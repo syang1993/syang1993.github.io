@@ -8,7 +8,63 @@
 
 <h2 align="center"> Audio samples for "ENHANCING HYBRID SELF-ATTENTION STRUCTURE WITH RELATIVE-POSITION-AWARE BIAS FOR SPEECH SYNTHESIS"</h2>
 <div><b>Authors:</b> Shan Yang, Heng Lu, Shiying Kang, Lei Xie, Dong Yu</div>
-<div><b>Abstract:</b> Recently, compared with the conventional ``front-end"--``back-end"--``vocoder" structure, based on the attention mechanism, end-to-end speech synthesis systems directly train and synthesize from text sequence to the acoustic feature sequence as a whole. More recently, a more calculation efficient architecture named Transformer, which is solely based on self-attention, was proposed to model global dependencies between the input and output sequences. However, although with many advantages, ``Transformer" lacks position information in its structure. And also, the weighted sum form in self-attention may disperse the attention to the whole input sequence other than focusing on the more important neighbouring positions. In order to solve the problems, in this paper, we proposes a hybrid self-attention structure which combines self-attention with the recurrent neural networks (RNNs), and then enhance the proposed structure with relative-position-aware biases. Experiments are conducted to compare proposed hybrid structure with other comparable speech synthesis structures. Mean opinion score (MOS) test results indicate that by enhancing hybrid self-attention structure with relative-position-aware biases, proposed system achieves the best performance with only 0.11 MOS score lower than natural recording.</div>
-<div>To BE BUILD</div>  
+<div><b>Abstract:</b> Recently, compared with the conventional "front-end"--"back-end"--"vocoder" structure, based on the attention mechanism, end-to-end speech synthesis systems directly train and synthesize from text sequence to the acoustic feature sequence as a whole. More recently, a more calculation efficient architecture named Transformer, which is solely based on self-attention, was proposed to model global dependencies between the input and output sequences. However, although with many advantages, ``Transformer" lacks position information in its structure. And also, the weighted sum form in self-attention may disperse the attention to the whole input sequence other than focusing on the more important neighbouring positions. In order to solve the problems, in this paper, we proposes a hybrid self-attention structure which combines self-attention with the recurrent neural networks (RNNs), and then enhance the proposed structure with relative-position-aware biases. Experiments are conducted to compare proposed hybrid structure with other comparable speech synthesis structures. Mean opinion score (MOS) test results indicate that by enhancing hybrid self-attention structure with relative-position-aware biases, proposed system achieves the best performance with only 0.11 MOS score lower than natural recording.</div>
+
+<h4>1. Comparing the solely self-attention model with and without relative-position-aware(RPA) (SELF-P vs SELF-R ): </h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>1.1. The top time for severe weather in the south-central Plains and the Ohio Valley is late spring.</span></td></tr>
+<tr><td>Natural:</td><td><audio controls><source src="samples/natural/NYT193-005-03.wav"></audio></td></tr>
+<tr><td>SELF-P (without RPA):</td><td><audio controls><source src="samples/SELF-P/NYT193-005-03.wav"></audio></td></tr>
+<tr><td>SELF-R (with RPA):</td><td><audio controls><source src="samples/SELF-R/NYT193-005-03.wav"></audio></td></tr>
+<tr><td colspan=2><span>1.2. I made a raft of far-reaching promises and improbable bargains..</span></td></tr>
+<tr><td>Natural:</td><td><audio controls><source src="samples/natural/ITAE-479-01.wav"></audio></td></tr>
+<tr><td>SELF-P (without RPA):</td><td><audio controls><source src="samples/SELF-P/ITAE-479-01.wav"></audio></td></tr>
+<tr><td>SELF-R (with RPA):</td><td><audio controls><source src="samples/SELF-R/ITAE-479-01.wav"></audio></td></tr>
+</table>
+</blockquote>
+
+<h4>2. Using CNN pre-net, Comparing the self-attention tower with and without relative-position-aware (CNN-P vs CNN-R ): </h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>2.1. Daughtry elaborated on the counting trick by bringing Cocky along.</span></td></tr>
+<tr><td>Natural:</td><td><audio controls><source src="samples/natural/ARC_201.wav"></audio></td></tr>
+<tr><td>SELF-P (without RPA):</td><td><audio controls><source src="samples/CNN-P/ARC_201.wav"></audio></td></tr>
+<tr><td>SELF-R (with RPA):</td><td><audio controls><source src="samples/CNN-R/ARC_201.wav"></audio></td></tr>
+<tr><td colspan=2><span>2.2. We threaten to be of the one mind before the voyage is completed.</span></td></tr>
+<tr><td>Natural:</td><td><audio controls><source src="samples/natural/ARC_385.wav"></audio></td></tr>
+<tr><td>SELF-P (without RPA):</td><td><audio controls><source src="samples/CNN-P/ARC_385.wav"></audio></td></tr>
+<tr><td>SELF-R (with RPA):</td><td><audio controls><source src="samples/CNN-R/ARC_385.wav"></audio></td></tr>
+</table>
+</blockquote>
+
+<h4>3. Comparing the CBHG tower with and without relative-position-aware (CBHG-P vs CBHG-R ): </h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>3.1. Just go to Google dot org and then check out flu trends.</span></td></tr>
+<tr><td>Natural:</td><td><audio controls><source src="samples/natural/LTI-78-2.wav"></audio></td></tr>
+<tr><td>CBHG-P (without RPA):</td><td><audio controls><source src="samples/CBHG-P/LTI-78-2.wav"></audio></td></tr>
+<tr><td>CBHG-R (with RPA):</td><td><audio controls><source src="samples/CBHG-R/LTI-78-2.wav"></audio></td></tr>
+<tr><td colspan=2><span>3.2. A big push is under way to step up the live cattle trade between northern Australia and Asia.</span></td></tr>
+<tr><td>Natural:</td><td><audio controls><source src="samples/natural/RURAL-14412.wav"></audio></td></tr>
+<tr><td>CBHG-P (without RPA):</td><td><audio controls><source src="samples/CBHG-P/RURAL-14412.wav"></audio></td></tr>
+<tr><td>CBHG-R (with RPA):</td><td><audio controls><source src="samples/CBHG-R/RURAL-14412.wav"></audio></td></tr>
+</table>
+</blockquote>
+
+<h4>4. Comparing the hybrid system with and without relative-position-aware (HYBRID-P vs HYBRID-R ): </h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>4.1. I also understand that similar branch organizations have made their appearance in Europe.</span></td></tr>
+<tr><td>Natural:</td><td><audio controls><source src="samples/natural/ARC_041.wav"></audio></td></tr>
+<tr><td>HYBRID-P (without RPA):</td><td><audio controls><source src="samples/HYBRID-P/ARC_041.wav"></audio></td></tr>
+<tr><td>HYBRID-R (with RPA):</td><td><audio controls><source src="samples/HYBRID-R/ARC_041.wav"></audio></td></tr>
+<tr><td colspan=2><span>4.2. Edward Chandler is a board observer for Lessac Technologies.</span></td></tr>
+<tr><td>Natural:</td><td><audio controls><source src="samples/natural/LTI-29.wav"></audio></td></tr>
+<tr><td>HYBRID-P (without RPA):</td><td><audio controls><source src="samples/HYBRID-P/LTI-29.wav"></audio></td></tr>
+<tr><td>HYBRID-R (with RPA):</td><td><audio controls><source src="samples/HYBRID-R/LTI-29.wav"></audio></td></tr>
+</table>
+</blockquote>
+
 </body>
 </html>
