@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Demo page for "On the localness modeling for the self-attention based end-to-end speech synthesis"</title>
+</head>
+<body>
+
+<h2 align="center"> Audio samples for "On the localness modeling for the self-attention based end-to-end speech synthesis"</h2>
+<div><b>Authors:</b> Shan Yang, Heng Lu, Shiying Kang, Liumeng Xue, Jinba Xiao, Dan Su, Lei Xie, Dong Yu</div>
+<div><b>Abstract:</b> Attention based end-to-end speech synthesis achieves better performance in both prosody and quality compared to the conventional "front-end"--"back-end" structure. But training such end-to-end framework is usually time-consuming because of the wide use of recurrent neural networks. To enable parallel calculation and long-range dependency modeling, a solely self-attention based framework named Transformer is proposed recently in the end-to-end family. However, it lacks position information in sequential modeling, so that the extra position representation is crucial to achieve good performance. Besides, the weighted sum form of self-attention is conducted over the whole input sequence when computing latent representation, which may disperse the attention to the whole input sequence other than focusing on the more important neighboring input states. In this paper, we introduce two localness modeling methods to enhance the self-attention based representation for speech synthesis, which maintain the abilities of parallel computation and global-range dependency modeling in self-attention at the same time. We systematically analyze the solely self-attention based end-to-end speech synthesis framework, and unveil the importance of local context. Then we add the proposed relative-position-aware method to enhance local edges and experiment with different architectures to examine the effectiveness of localness modeling. In order to achieve query-specific window and discard the hyper-parameter of the relative-position-aware approach, we further conduct Gaussian-based bias to enhance localness. Experimental results indicate that the two proposed localness enhanced methods can both improve the performance of the self-attention model, especially when applied to the encoder part. And the query-specific window of Gaussian bias approach is more  robust compared with the fixed relative edges. </div>
+
+<h4>1. Refer to Section 6.3 in the paper. Comparing the solely self-attention model with character- and phoneme-level inputs: </h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>1.1. A former wool grower and shearer's cook has won Australia's richest literary prize.</span></td></tr>
+<tr><td width="200">SELF-P (char-level):</td><td><audio controls><source src="samples/SELF-P-char/RURAL-05487.wav"></audio></td></tr>
+<tr><td>SELF-P (phoneme-level):</td><td><audio controls><source src="samples/SELF-P-phoneme/RURAL-05487.wav"></audio></td></tr>
+<tr><td colspan=2><span>1.2. I also understand that similar branch organizations have made their appearance in Europe.</span></td></tr>
+<tr><td width="200">SELF-P (char-level):</td><td><audio controls><source src="samples/SELF-P-char/ARC_041.wav"></audio></td></tr>
+<tr><td>SELF-P (phoneme-level):</td><td><audio controls><source src="samples/SELF-P-phoneme/ARC_041.wav"></audio></td></tr>
+</table>
+<font color=red>Short summary: </font> With the solely self-attention, only a few words in the character-level model are correctly pronounced. Injecting prior language-dependent knowledge can significantly improve the performace.
+</blockquote>
+
+<h4>2. Refer to Section 6.4.1 in the paper. With <b>character-level</b> inputs in solely self-attention model, comparing the effectiveness of relative-position-aware localness enhancements (SELF-P vs SELF-R): </h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>2.1. I made a raft of far-reaching promises and improbable bargains.</span></td></tr>
+<tr><td width="200">SELF-P (char-level):</td><td><audio controls><source src="samples/SELF-P-char/ITAE-479-01.wav"></audio></td></tr>
+<tr><td>SELF-R (window=2):</td><td><audio controls><source src="samples/SELF-R-2/ITAE-479-01.wav"></audio></td></tr>
+<tr><td>SELF-R (window=10):</td><td><audio controls><source src="samples/SELF-R-10/ITAE-479-01.wav"></audio></td></tr>
+<tr><td>SELF-R (window=40):</td><td><audio controls><source src="samples/SELF-R-40/ITAE-479-01.wav"></audio></td></tr>
+<tr><td colspan=2><span>2.2. In cancer, cells ignore the normal signals from the body and proliferate uncontrollably.</span></td></tr>
+<tr><td width="200">SELF-P (char-level):</td><td><audio controls><source src="samples/SELF-P-char/SCIENCE-09400.wav"></audio></td></tr>
+<tr><td>SELF-R (window=2):</td><td><audio controls><source src="samples/SELF-R-2/SCIENCE-09400.wav"></audio></td></tr>
+<tr><td>SELF-R (window=10):</td><td><audio controls><source src="samples/SELF-R-10/SCIENCE-09400.wav"></audio></td></tr>
+<tr><td>SELF-R (window=40):</td><td><audio controls><source src="samples/SELF-R-40/SCIENCE-09400.wav"></audio></td></tr>
+</table>
+<font color=red>Short summary: </font> With relative-position-aware, the solely self-attention model with character-level input can generate mostly intelligent speech. And the length of local window affects the model performance.
+</blockquote>
+
+<blockquote>
+<table>
+<tr><td width="2000" align=center><img src="figures/relative.png" width=600></td></tr>
+<tr><td align=center>Table 1. MOS evaluation of SELF-R systems with dierent clipping value with 95% confidence interval</td></tr>
+</table>
+</blockquote>
+
+
+<h4>3. Refer to Section 6.4.2 in the paper. With CNN pre-net, comparing the effectiveness of relative-position-aware approach (CNN-P vs CNN-R): </h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>3.1. Just go to Google dot org and then check out flu trends.</span></td></tr>
+<tr><td width="200">CNN-P:</td><td><audio controls><source src="samples/CNN-P/LTI-78-2.wav"></audio></td></tr>
+<tr><td>CNN-R:</td><td><audio controls><source src="samples/CNN-R-E10D10/LTI-78-2.wav"></audio></td></tr>
+<tr><td colspan=2><span>3.2. He added, no hairs of Negroid origin were observed on any of the slides.</span></td></tr>
+<tr><td width="200">CNN-P:</td><td><audio controls><source src="samples/CNN-P/NYT069-031-01.wav"></audio></td></tr>
+<tr><td>CNN-R:</td><td><audio controls><source src="samples/CNN-R-E10D10/NYT069-031-01.wav"></audio></td></tr>
+<tr><td colspan=2><span>3.3. Her arthritis bothered her a lot in the last months.</span></td></tr>
+<tr><td width="200">CNN-P:</td><td><audio controls><source src="samples/CNN-P/HIPS-0980-04.wav"></audio></td></tr>
+<tr><td>CNN-R:</td><td><audio controls><source src="samples/CNN-R-E10D10/HIPS-0980-04.wav"></audio></td></tr>
+</table>
+<font color=red>Short summary: </font> CNN-P suffers froms the skipping pronunciation, which can be alleviate by CNN-R. And CNN-R has better prosody according to listening test.</blockquote>
+
+<blockquote>
+<table>
+<tr><td width="2000" align=center><img src="figures/abx.png" width=600></td></tr>
+<tr><td align=center>Figure 1. Preference test</td></tr>
+</table>
+</blockquote>
+
+
+
+<h4>4. Refer to Section 6.4.2 in the paper. Comparing the effectiveness of applying relative-position-aware approach in different modules: </h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>3.1. On February eighth, the military began to ready itself for a possible strike.</span></td></tr>
+<tr><td width="200">CNN-R:</td><td><audio controls><source src="samples/CNN-R-E10D10/NAN_296.wav"></audio></td></tr>
+<tr><td>CNN-R (only in encoder):</td><td><audio controls><source src="samples/CNN-R-E10D0/NAN_296.wav"></audio></td></tr>
+<tr><td>CNN-R (only in decoder):</td><td><audio controls><source src="samples/CNN-R-E0D10/NAN_296.wav"></audio></td></tr>
+<tr><td colspan=2><span>3.2. I think we need to take a long look at all of our security procedures, he said.</span></td></tr>
+<tr><td width="200">CNN-R:</td><td><audio controls><source src="samples/CNN-R-E10D10/NAN_668.wav"></audio></td></tr>
+<tr><td>CNN-R (only in encoder):</td><td><audio controls><source src="samples/CNN-R-E10D0/NAN_668.wav"></audio></td></tr>
+<tr><td>CNN-R (only in decoder):</td><td><audio controls><source src="samples/CNN-R-E0D10/NAN_668.wav"></audio></td></tr>
+</table>
+<font color=red>Short summary: </font> No significant difference between CNN-R and CNN-R (encoder). But CNN-R (decoder) also suffers froms the skipping and repeating problems like CNN-P.
+</blockquote>
+
+<blockquote>
+<table>
+<tr><td width="2000" align=center><img src="figures/mos.png" width=400></td></tr>
+<tr><td align=center>Table 2. MOS evaluation of CNN-P and CNN-R with 95% confidence interval</td></tr>
+</table>
+</blockquote>
+
+
+<h4>5. Refer to Section 6.5 in the paper. Comparing the effectiveness of learnable Gaussian bias apporach (CNN-R vs CNN-G ): </h4>
+<blockquote>
+<table>
+<tr><td colspan=2><span>5.1. Only a mathematical proof, based on logic, can handle questions of the infinite.</span></td></tr>
+<tr><td width="200">CNN-R (encoder):</td><td><audio controls><source src="samples/CNN-R-E10D0/NYT014-017-01.wav"></audio></td></tr>
+<tr><td>CNN-G:</td><td><audio controls><source src="samples/CNN-G/NYT014-017-01.wav"></audio></td></tr>
+<tr><td colspan=2><span>5.2. I never saw anything like her in my life.</span></td></tr>
+<tr><td width="200">CNN-R (encoder):</td><td><audio controls><source src="samples/CNN-R-E10D0/ARC_181.wav"></audio></td></tr>
+<tr><td>CNN-G:</td><td><audio controls><source src="samples/CNN-G/ARC_181.wav"></audio></td></tr>
+</table>
+<font color=red>Short summary: </font> No significant difference between CNN-R (encoder) and CNN-G. But CNN-G is much more stable than all other systems.
+</blockquote>
+
+<blockquote>
+<table>
+<tr><td width="2000" align=center><img src="figures/mos2.png" width=400></td></tr>
+<tr><td align=center>Table 3. MOS evaluation of CNN-G systems with 95% confidence interval.</td></tr>
+</table>
+</blockquote>
+
+<blockquote>
+<table>
+<tr><td width="2000" align=center><img src="figures/error.png" width=400></td></tr>
+<tr><td align=center>Table 4. Counted errors of dierent models on the 100-sentence test set.</td></tr>
+</table>
+</blockquote>
+
+
+</body>
+
+</html>
