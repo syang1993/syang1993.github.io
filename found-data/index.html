@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Demo page for "Sequence-to-sequence based Speech Synthesis for Noisy Found Data with Adversarial Feature Learning and Unsupervised Clustering"</title>
+</head>
+<body>
+
+<h2 align="center"> Audio samples for "Sequence-to-sequence based Speech Synthesis for Noisy Found Data with Adversarial Feature Learning and Unsupervised Clustering"</h2>
+<div><b>Authors:</b> Shan Yang, Yuxuan Wang, Lei Xie</div>
+<div><b>Abstract:</b> We propose a sequence-to-sequence (seq2seq) based speech synthesis approach with unsupervised clustering and adversarial feature learning for found data. Attention based seq2seq approach has been widely used in recent speech synthesis frameworks because of its satisfactory quality and simplified pipe line. But a studio-quality corpus with manual transcription from a professional anchor is necessary to train such frameworks. In this work, we mainly focus on how to build a high-quality and stable system for noisy found data. We firstly evaluate the influence of noisy transcription and waveform on the state-of-the- art attention based acoustic model. Then we propose a heuristic method to alleviate the influence of text noise. Finally we propose to learn noise-independent latent representation with adversarial training to generate clean voice for the target noisy speaker. Experiments show that the proposed methods can build robust clean target voice without extra speech enhancement module. </div>
+
+<h4>1. Evaluate the effects of individual <font color=red>text-side noise</font>: </h4>
+<blockquote>
+<table border=1>
+<tr>
+    <td><span></span></td>
+    <td><span>1.1. 秉哲也回吻大蟒蛇。</span></td>
+    <td><span>1.2. 赵本山大红唐装喜气洋洋，做掩面状耍宝。<span></td>
+    <td><span>1.3. 钱荣摆开抄的架势道：一个私立中学，哈，这样子的试卷也要我来做。<span></td>
+</tr>
+<tr>
+    <td width="220">Recording</td>
+    <td><audio controls><source src="samples/recording/000119.wav"></audio></td>
+    <td><audio controls><source src="samples/recording/000742.wav"></audio></td>
+    <td><audio controls><source src="samples/recording/008611.wav"></audio></td>
+</tr>
+<tr>
+    <td>Top-line (system A)</td>
+    <td><audio controls><source src="samples/system_a/000119.wav"></audio></td>
+    <td><audio controls><source src="samples/system_a/000742.wav"></audio></td>
+    <td><audio controls><source src="samples/system_a/008611.wav"></audio></td>
+</tr>
+<tr>
+    <td>8.9% WER (system B)</td>
+    <td><audio controls><source src="samples/system_b/000119.wav"></audio></td>
+    <td><audio controls><source src="samples/system_b/000742.wav"></audio></td>
+    <td><audio controls><source src="samples/system_b/008611.wav"></audio></td>
+</tr>
+<tr>
+    <td>11.3% WER (system C)</td>
+    <td><audio controls><source src="samples/system_c/000119.wav"></audio></td>
+    <td><audio controls><source src="samples/system_c/000742.wav"></audio></td>
+    <td><audio controls><source src="samples/system_c/008611.wav"></audio></td>
+</tr>
+<tr>
+    <td>22.5% WER (system D)</td>
+    <td><audio controls><source src="samples/system_d/000119.wav"></audio></td>
+    <td><audio controls><source src="samples/system_d/000742.wav"></audio></td>
+    <td><audio controls><source src="samples/system_d/008611.wav"></audio></td>
+</tr>
+<tr>
+    <td>22.5% WER (LSA, system E)</td>
+    <td><audio controls><source src="samples/system_e/000119.wav"></audio></td>
+    <td><audio controls><source src="samples/system_e/000742.wav"></audio></td>
+    <td><audio controls><source src="samples/system_e/008611.wav"></audio></td>
+</tr>
+</table>
+<br/>
+<font color=red>Short summary: </font> For individual text-side noise, the text error rate indeed affects the performance of speech synthesis. With less than 10% WER, the synthezied speech is robust in pronunciation but suffers a little from prosody. But the system D with 22.5% WER suffers a lot from the mispronunciation problem.
+</blockquote>
+
+
+<h4>2. Evaluate the effects of individual <font color=red>speech-side noise</font>: </h4>
+<blockquote>
+<table border=1>
+<tr>
+    <td><span></span></td>
+    <td><span>2.1. 示威所在的广场内人满为患。</span></td>
+    <td><span>2.2. 网友“好味道”说，反正也没事，申请一个摇着玩呗。<span></td>
+    <td><span>2.3. 寿星杨千嬅捐出两千元抽奖，上台时一面吃甜品一面抽奖。<span></td>
+</tr>
+<tr>
+    <td width="220">Recording</td>
+    <td><audio controls><source src="samples/recording/003194.wav"></audio></td>
+    <td><audio controls><source src="samples/recording/001087.wav"></audio></td>
+    <td><audio controls><source src="samples/recording/000483.wav"></audio></td>
+</tr>
+<tr>
+    <td>Top-line (system A)</td>
+    <td><audio controls><source src="samples/system_a/003194.wav"></audio></td>
+    <td><audio controls><source src="samples/system_a/001087.wav"></audio></td>
+    <td><audio controls><source src="samples/system_a/000483.wav"></audio></td>
+</tr>
+<tr>
+    <td>8 dB SNR (system F)</td>
+    <td><audio controls><source src="samples/system_f/003194.wav"></audio></td>
+    <td><audio controls><source src="samples/system_f/001087.wav"></audio></td>
+    <td><audio controls><source src="samples/system_f/000483.wav"></audio></td>
+</tr>
+<tr>
+    <td>4 dB SNR (system G)</td>
+    <td><audio controls><source src="samples/system_g/003194.wav"></audio></td>
+    <td><audio controls><source src="samples/system_g/001087.wav"></audio></td>
+    <td><audio controls><source src="samples/system_g/000483.wav"></audio></td>
+</tr>
+</table>
+<br/>
+<font color=red>Short summary: </font> For individual speech-side noise, the SNR directly affects the performance of synthesized speech. But the seq2seq framework is robust to generate speech content.
+</blockquote>
+
+<h4>3. Evaluate the found data scene (with both <font color=red>text-side noise</font> and <font color=red>speech-side noise</font>): </h4>
+<blockquote>
+<table border=1>
+<tr>
+    <td><span></span></td>
+    <td><span>3.1. 太仓港打捞上岸的江豚。</span></td>
+    <td><span>3.2. 永远也忘不了班主任那哀怨的眼神。<span></td>
+    <td><span>3.3. 老婆，哥都有仨儿子了，咱们要加油呀！<span></td>
+</tr>
+<tr>
+    <td width="320">Recording</td>
+    <td><audio controls><source src="samples/recording/000536.wav"></audio></td>
+    <td><audio controls><source src="samples/recording/000604.wav"></audio></td>
+    <td><audio controls><source src="samples/recording/001309.wav"></audio></td>
+</tr>
+<tr>
+    <td>Top-line (system A)</td>
+    <td><audio controls><source src="samples/system_a/000536.wav"></audio></td>
+    <td><audio controls><source src="samples/system_a/000604.wav"></audio></td>
+    <td><audio controls><source src="samples/system_a/001309.wav"></audio></td>
+</tr>
+<tr>
+    <td>4 dB SNR and 22.5% WER (system H)</td>
+    <td><audio controls><source src="samples/system_h/000536.wav"></audio></td>
+    <td><audio controls><source src="samples/system_h/000604.wav"></audio></td>
+    <td><audio controls><source src="samples/system_h/001309.wav"></audio></td>
+</tr>
+</table>
+<br/>
+<font color=red>Short summary: </font> For real found data scene, the generated speech contains strong noise and always crashes during the generation.
+</blockquote>
+
+<h4>4. Evaluate the proposed <font color=red>unsupervised clustering</font> for text-side noise: </h4>
+<blockquote>
+<table border=1>
+<tr>
+    <td><span></span></td>
+    <td><span>4.1. 辛苦拉扯大一儿一女。<span></td>
+    <td><span>4.2. 实现由农业大省向农业强省的转变。</span></td>
+    <td><span>4.3. 奥运会之前有谁听说过蔡亚林的名字？<span></td>
+</tr>
+<tr>
+    <td width="320">Recording</td>
+    <td><audio controls><source src="samples/recording/003268.wav"></audio></td>
+    <td><audio controls><source src="samples/recording/003188.wav"></audio></td>
+    <td><audio controls><source src="samples/recording/004110.wav"></audio></td>
+</tr>
+<tr>
+    <td>Top-line (system A)</td>
+    <td><audio controls><source src="samples/system_a/003268.wav"></audio></td>
+    <td><audio controls><source src="samples/system_a/003188.wav"></audio></td>
+    <td><audio controls><source src="samples/system_a/004110.wav"></audio></td>
+</tr>
+<tr>
+    <td>Unsupervised clustering on top-line (system VQVAE_A)</td>
+    <td><audio controls><source src="samples/vqvae_a/003268.wav"></audio></td>
+    <td><audio controls><source src="samples/vqvae_a/003188.wav"></audio></td>
+    <td><audio controls><source src="samples/vqvae_a/004110.wav"></audio></td>
+</tr>
+<tr>
+    <td>22.5% WER (system D)</td>
+    <td><audio controls><source src="samples/system_d/003268.wav"></audio></td>
+    <td><audio controls><source src="samples/system_d/003188.wav"></audio></td>
+    <td><audio controls><source src="samples/system_d/004110.wav"></audio></td>
+</tr>
+<tr>
+    <td>Unsupervised clustering with 22.5% WER(system VQVAE_D)</td>
+    <td><audio controls><source src="samples/vqvae_d/003268.wav"></audio></td>
+    <td><audio controls><source src="samples/vqvae_d/003188.wav"></audio></td>
+    <td><audio controls><source src="samples/vqvae_d/004110.wav"></audio></td>
+</tr>
+</table>
+<br/>
+<table>
+    <tr><td width="2000" align=center><img src="figures/text-noise.png" width=600></td></tr>
+    <tr><td align=center>Table 1. The performance of proposed methods for only text-side noise.</td></tr>
+</table>
+
+<br/>
+<font color=red>Short summary: </font> For text-side noise, the proposed unsupervised clustering can significantly reduce the mispronunciation error cuased by text noise. The proposed method also achieves similar performance to top-line systems with correct transcription.
+</blockquote>
+
+<h4>5. Evaluate the further proposed <font color=red>adversarial feature learning</font> for found data: </h4>
+<blockquote>
+<table border=1>
+<tr>
+    <td><span></span></td>
+    <td><span>5.1. 现在宝宝还经常踢我，很活泼。<span></td>
+    <td><span>5.2. 初步统计全市经济损失约五点四三八亿元。</span></td>
+    <td><span>5.3. 萨科齐可能依据隆盖的报告决定是否提早撤军。<span></td>
+</tr>
+<tr>
+    <td width="320">Recording</td>
+    <td><audio controls><source src="samples/recording/004520.wav"></audio></td>
+    <td><audio controls><source src="samples/recording/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/recording/005358.wav"></audio></td>
+</tr>
+<tr>
+    <td>Top-line (system A)</td>
+    <td><audio controls><source src="samples/system_a/004520.wav"></audio></td>
+    <td><audio controls><source src="samples/system_a/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/system_a/005358.wav"></audio></td>
+</tr>
+<tr>
+    <td>4 dB SNR and 22.5% WER (system H)</td>
+    <td><audio controls><source src="samples/system_h/004520.wav"></audio></td>
+    <td><audio controls><source src="samples/system_h/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/system_h/005358.wav"></audio></td>
+</tr>
+<tr>
+    <td>Unsupervised pre-enhancement (system Separabl)</td>
+    <td><audio controls><source src="samples/separabl/004520.wav"></audio></td>
+    <td><audio controls><source src="samples/separabl/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/separabl/005358.wav"></audio></td>
+</tr>
+<tr>
+    <td>Supervised pre-enhancement (system DCUnet)</td>
+    <td><audio controls><source src="samples/dcunet/004520.wav"></audio></td>
+    <td><audio controls><source src="samples/dcunet/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/dcunet/005358.wav"></audio></td>
+</tr>
+<tr>
+    <td>Sentence-level adversarial feature learning (system Adv_sen)</td>
+    <td><audio controls><source src="samples/adv_sen/004520.wav"></audio></td>
+    <td><audio controls><source src="samples/adv_sen/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/adv_sen/005358.wav"></audio></td>
+</tr>
+<tr>
+    <td>Frame-level adversarial feature learning (system Adv_frame)</td>
+    <td><audio controls><source src="samples/adv_frame/004520.wav"></audio></td>
+    <td><audio controls><source src="samples/adv_frame/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/adv_frame/005358.wav"></audio></td>
+</tr>
+</table>
+<br/>
+<table>
+    <tr><td width="2000" align=center><img src="figures/founddata.png" width=600></td></tr>
+    <tr><td align=center>Table 1. The performance of proposed methods for both text- and speech-side noise.</td></tr>
+</table>
+<br/>
+<font color=red>Short summary: </font> For found data, the pre-enhancement can reduce the noise in generated speech, but it may cause speech distortion and cannot solve the mispronunciation problem. The proposed unsupervised clustering and advesarial feature learning methods can produce high-quality clean target speaker voice and solve the mispronunciation problems.
+</blockquote>
+
+
+<br/>
+<br/>
+</body>
+
+</html>
