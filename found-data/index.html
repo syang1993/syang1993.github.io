@@ -11,7 +11,7 @@
 <div><b>Abstract:</b> Attention-based sequence-to-sequence (seq2seq) speech synthesis has achieved extraordinary performance. But a studio-quality corpus with manual transcription is necessary to train such seq2seq systems. In this paper, we propose an approach to build high-quality and stable seq2seq based speech synthesis system using challenging found data, where training speech contains noisy interferences (speech-side noise) and texts are imperfect speech recognition transcripts (text-side noise). To deal with text-side noise, we propose a VQVAE based heuristic method to compensate the erroneous linguistic feature with phonetic information learned directly from speech. As for the speech-side noise, we propose to learn a noise-independent feature in the auto-regressive decoder through adversarial training and data augmentation, which does not need an extra speech enhancement model. Experiments show the effectiveness of the proposed approaches in dealing with text-side and speech-side noise. Surpassing the denoising approach based on a state-of-the-art speech enhancement model, our system built on noisy found data can synthesize clean and high-quality speech with MOS close to the system built on the clean counterpart.
  </div>
 
-<h4>1. Examples of 4 dB noisy audio and 22.5% CER transcription: </h4>
+<h4>1. Examples of 4 dB noisy audio and 23.3% CER transcription: </h4>
 <blockquote>
 <table border=1>
 <tr>
@@ -66,25 +66,25 @@
     <td><audio controls><source src="samples/system_a/008611.wav"></audio></td>
 </tr>
 <tr>
-    <td>8.9% WER (system B)</td>
+    <td>8.8% WER (system B)</td>
     <td><audio controls><source src="samples/system_b/000119.wav"></audio></td>
     <td><audio controls><source src="samples/system_b/000742.wav"></audio></td>
     <td><audio controls><source src="samples/system_b/008611.wav"></audio></td>
 </tr>
 <tr>
-    <td>11.3% WER (system C)</td>
+    <td>11.7% WER (system C)</td>
     <td><audio controls><source src="samples/system_c/000119.wav"></audio></td>
     <td><audio controls><source src="samples/system_c/000742.wav"></audio></td>
     <td><audio controls><source src="samples/system_c/008611.wav"></audio></td>
 </tr>
 <tr>
-    <td>22.5% WER (system D)</td>
+    <td>23.3% WER (system D)</td>
     <td><audio controls><source src="samples/system_d/000119.wav"></audio></td>
     <td><audio controls><source src="samples/system_d/000742.wav"></audio></td>
     <td><audio controls><source src="samples/system_d/008611.wav"></audio></td>
 </tr>
 <tr>
-    <td>22.5% WER (LSA, system E)</td>
+    <td>23.3% WER (LSA, system E)</td>
     <td><audio controls><source src="samples/system_e/000119.wav"></audio></td>
     <td><audio controls><source src="samples/system_e/000742.wav"></audio></td>
     <td><audio controls><source src="samples/system_e/008611.wav"></audio></td>
@@ -98,7 +98,7 @@
 </table>
 
 <br/>
-<font color=red>Short summary: </font> For individual text-side noise, the text error rate indeed affects the performance of speech synthesis. With less than 10% WER, the synthezied speech is robust in pronunciation but suffers a little from prosody. But the system D with 22.5% WER suffers a lot from the mispronunciation problem.
+<font color=red>Short summary: </font> For individual text-side noise, the text error rate indeed affects the performance of speech synthesis. With less than 10% WER, the synthezied speech is robust in pronunciation but suffers a little from prosody. But the system D with 23.3% WER suffers a lot from the mispronunciation problem.
 </blockquote>
 
 
@@ -162,7 +162,7 @@
     <td><audio controls><source src="samples/system_a/001309.wav"></audio></td>
 </tr>
 <tr>
-    <td>4 dB SNR and 22.5% WER (system H)</td>
+    <td>4 dB SNR and 23.3% WER (system H)</td>
     <td><audio controls><source src="samples/system_h/000536.wav"></audio></td>
     <td><audio controls><source src="samples/system_h/000604.wav"></audio></td>
     <td><audio controls><source src="samples/system_h/001309.wav"></audio></td>
@@ -200,13 +200,13 @@
     <td><audio controls><source src="samples/vqvae_a/004110.wav"></audio></td>
 </tr>
 <tr>
-    <td>22.5% WER (system D)</td>
+    <td>23.3% WER (system D)</td>
     <td><audio controls><source src="samples/system_d/003268.wav"></audio></td>
     <td><audio controls><source src="samples/system_d/003188.wav"></audio></td>
     <td><audio controls><source src="samples/system_d/004110.wav"></audio></td>
 </tr>
 <tr>
-    <td>Unsupervised clustering with 22.5% WER(system VQVAE_D)</td>
+    <td>Unsupervised clustering with 23.3% WER(system VQVAE_D)</td>
     <td><audio controls><source src="samples/vqvae_d/003268.wav"></audio></td>
     <td><audio controls><source src="samples/vqvae_d/003188.wav"></audio></td>
     <td><audio controls><source src="samples/vqvae_d/004110.wav"></audio></td>
@@ -244,7 +244,7 @@
     <td><audio controls><source src="samples/system_a/005358.wav"></audio></td>
 </tr>
 <tr>
-    <td>4 dB SNR and 22.5% WER (system H)</td>
+    <td>4 dB SNR and 23.3% WER (system H)</td>
     <td><audio controls><source src="samples/system_h/004520.wav"></audio></td>
     <td><audio controls><source src="samples/system_h/004562.wav"></audio></td>
     <td><audio controls><source src="samples/system_h/005358.wav"></audio></td>
