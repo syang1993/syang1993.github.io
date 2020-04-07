@@ -8,16 +8,50 @@
 
 <h2 align="center"> Audio samples for "Sequence-to-sequence based Speech Synthesis for Noisy Found Data with Adversarial Feature Learning and Unsupervised Clustering"</h2>
 <div><b>Authors:</b> Shan Yang, Yuxuan Wang, Lei Xie</div>
-<div><b>Abstract:</b> We propose a sequence-to-sequence (seq2seq) based speech synthesis approach with unsupervised clustering and adversarial feature learning for found data. Attention based seq2seq approach has been widely used in recent speech synthesis frameworks because of its satisfactory quality and simplified pipe line. But a studio-quality corpus with manual transcription from a professional anchor is necessary to train such frameworks. In this work, we mainly focus on how to build a high-quality and stable system for noisy found data. We firstly evaluate the influence of noisy transcription and waveform on the state-of-the- art attention based acoustic model. Then we propose a heuristic method to alleviate the influence of text noise. Finally we propose to learn noise-independent latent representation with adversarial training to generate clean voice for the target noisy speaker. Experiments show that the proposed methods can build robust clean target voice without extra speech enhancement module. </div>
+<div><b>Abstract:</b> Attention-based sequence-to-sequence (seq2seq) speech synthesis has achieved extraordinary performance. But a studio-quality corpus with manual transcription is necessary to train such seq2seq systems. In this paper, we propose an approach to build high-quality and stable seq2seq based speech synthesis system using challenging found data, where training speech contains noisy interferences (speech-side noise) and texts are imperfect speech recognition transcripts (text-side noise). To deal with text-side noise, we propose a VQVAE based heuristic method to compensate the erroneous linguistic feature with phonetic information learned directly from speech. As for the speech-side noise, we propose to learn a noise-independent feature in the auto-regressive decoder through adversarial training and data augmentation, which does not need an extra speech enhancement model. Experiments show the effectiveness of the proposed approaches in dealing with text-side and speech-side noise. Surpassing the denoising approach based on a state-of-the-art speech enhancement model, our system built on noisy found data can synthesize clean and high-quality speech with MOS close to the system built on the clean counterpart.
+ </div>
 
-<h4>1. Evaluate the effects of individual <font color=red>text-side noise</font>: </h4>
+<h4>1. Examples of 4 dB noisy audio and 22.5% CER transcription: </h4>
+<blockquote>
+<table border=1>
+<tr>
+    <td><span>Golden transcription</span></td>
+    <td><span>1.1. 坡土岩性为坡坡，残积土属土质边坡。</span></td>
+    <td><span>1.2. 每家作坊损失有一二十万元。<span></td>
+    <td><span>1.3. 云雾有时宛如玉带平卧峰峦山涧，有时炊烟袅绕，薄雾轻旋。<span></td>
+</tr>
+<tr>
+    <td width="220">ASR transcription</td>
+    <td><span>1.1. 不吐炎性维护和含基础土质边坡。</span></td>
+    <td><span>1.2. 家租房子是有一二十万元。</span></td>
+    <td><span>1.3. 永久修改游戏大苹果封门身兼六十一炊烟缭绕薄雾轻旋。</span></td>
+</tr>
+<tr>
+    <td>Audio</td>
+    <td><audio controls><source src="samples/noisy_recording/000108.wav"></audio></td>
+    <td><audio controls><source src="samples/noisy_recording/000126.wav"></audio></td>
+    <td><audio controls><source src="samples/noisy_recording/000042.wav"></audio></td>
+</tr>
+<tr>
+    <td>Spectrogram</td>
+    <td width="200" align=center><img src="figures/000108.png" width=300></td>
+    <td width="200" align=center><img src="figures/000126.png" width=300></td>
+    <td width="200" align=center><img src="figures/000042.png" width=300></td>
+</tr>
+
+</table>
+<br/>
+</blockquote>
+
+
+<h4>2. Evaluate the effects of individual <font color=red>text-side noise</font>: </h4>
 <blockquote>
 <table border=1>
 <tr>
     <td><span></span></td>
-    <td><span>1.1. 秉哲也回吻大蟒蛇。</span></td>
-    <td><span>1.2. 赵本山大红唐装喜气洋洋，做掩面状耍宝。<span></td>
-    <td><span>1.3. 钱荣摆开抄的架势道：一个私立中学，哈，这样子的试卷也要我来做。<span></td>
+    <td><span>2.1. 秉哲也回吻大蟒蛇。</span></td>
+    <td><span>2.2. 赵本山大红唐装喜气洋洋，做掩面状耍宝。<span></td>
+    <td><span>2.3. 钱荣摆开抄的架势道：一个私立中学，哈，这样子的试卷也要我来做。<span></td>
 </tr>
 <tr>
     <td width="220">Recording</td>
@@ -57,18 +91,25 @@
 </tr>
 </table>
 <br/>
+
+<table>
+    <tr><td width="2000" align=center><img src="figures/baseline.png" width=600></td></tr>
+    <tr><td align=center>Table 1. The performance of proposed methods for only text-side noise.</td></tr>
+</table>
+
+<br/>
 <font color=red>Short summary: </font> For individual text-side noise, the text error rate indeed affects the performance of speech synthesis. With less than 10% WER, the synthezied speech is robust in pronunciation but suffers a little from prosody. But the system D with 22.5% WER suffers a lot from the mispronunciation problem.
 </blockquote>
 
 
-<h4>2. Evaluate the effects of individual <font color=red>speech-side noise</font>: </h4>
+<h4>3. Evaluate the effects of individual <font color=red>speech-side noise</font>: </h4>
 <blockquote>
 <table border=1>
 <tr>
     <td><span></span></td>
-    <td><span>2.1. 示威所在的广场内人满为患。</span></td>
-    <td><span>2.2. 网友“好味道”说，反正也没事，申请一个摇着玩呗。<span></td>
-    <td><span>2.3. 寿星杨千嬅捐出两千元抽奖，上台时一面吃甜品一面抽奖。<span></td>
+    <td><span>3.1. 示威所在的广场内人满为患。</span></td>
+    <td><span>3.2. 网友“好味道”说，反正也没事，申请一个摇着玩呗。<span></td>
+    <td><span>3.3. 寿星杨千嬅捐出两千元抽奖，上台时一面吃甜品一面抽奖。<span></td>
 </tr>
 <tr>
     <td width="220">Recording</td>
@@ -99,14 +140,14 @@
 <font color=red>Short summary: </font> For individual speech-side noise, the SNR directly affects the performance of synthesized speech. But the seq2seq framework is robust to generate speech content.
 </blockquote>
 
-<h4>3. Evaluate the found data scene (with both <font color=red>text-side noise</font> and <font color=red>speech-side noise</font>): </h4>
+<h4>4. Evaluate the found data scene (with both <font color=red>text-side noise</font> and <font color=red>speech-side noise</font>): </h4>
 <blockquote>
 <table border=1>
 <tr>
     <td><span></span></td>
-    <td><span>3.1. 太仓港打捞上岸的江豚。</span></td>
-    <td><span>3.2. 永远也忘不了班主任那哀怨的眼神。<span></td>
-    <td><span>3.3. 老婆，哥都有仨儿子了，咱们要加油呀！<span></td>
+    <td><span>4.1. 太仓港打捞上岸的江豚。</span></td>
+    <td><span>4.2. 永远也忘不了班主任那哀怨的眼神。<span></td>
+    <td><span>4.3. 老婆，哥都有仨儿子了，咱们要加油呀！<span></td>
 </tr>
 <tr>
     <td width="320">Recording</td>
@@ -131,14 +172,14 @@
 <font color=red>Short summary: </font> For real found data scene, the generated speech contains strong noise and always crashes during the generation.
 </blockquote>
 
-<h4>4. Evaluate the proposed <font color=red>unsupervised clustering</font> for text-side noise: </h4>
+<h4>5. Evaluate the proposed <font color=red>unsupervised clustering</font> for text-side noise: </h4>
 <blockquote>
 <table border=1>
 <tr>
     <td><span></span></td>
-    <td><span>4.1. 辛苦拉扯大一儿一女。<span></td>
-    <td><span>4.2. 实现由农业大省向农业强省的转变。</span></td>
-    <td><span>4.3. 奥运会之前有谁听说过蔡亚林的名字？<span></td>
+    <td><span>5.1. 辛苦拉扯大一儿一女。<span></td>
+    <td><span>5.2. 实现由农业大省向农业强省的转变。</span></td>
+    <td><span>5.3. 奥运会之前有谁听说过蔡亚林的名字？<span></td>
 </tr>
 <tr>
     <td width="320">Recording</td>
@@ -181,14 +222,14 @@
 <font color=red>Short summary: </font> For text-side noise, the proposed unsupervised clustering can significantly reduce the mispronunciation error cuased by text noise. The proposed method also achieves similar performance to top-line systems with correct transcription.
 </blockquote>
 
-<h4>5. Evaluate the further proposed <font color=red>adversarial feature learning</font> for found data: </h4>
+<h4>6. Evaluate the further proposed <font color=red>adversarial feature learning</font> for found data: </h4>
 <blockquote>
 <table border=1>
 <tr>
     <td><span></span></td>
-    <td><span>5.1. 现在宝宝还经常踢我，很活泼。<span></td>
-    <td><span>5.2. 初步统计全市经济损失约五点四三八亿元。</span></td>
-    <td><span>5.3. 萨科齐可能依据隆盖的报告决定是否提早撤军。<span></td>
+    <td><span>6.1. 现在宝宝还经常踢我，很活泼。<span></td>
+    <td><span>6.2. 初步统计全市经济损失约五点四三八亿元。</span></td>
+    <td><span>6.3. 萨科齐可能依据隆盖的报告决定是否提早撤军。<span></td>
 </tr>
 <tr>
     <td width="320">Recording</td>
