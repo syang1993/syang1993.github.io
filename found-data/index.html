@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Demo page for "Sequence-to-sequence based Speech Synthesis for Noisy Found Data with Adversarial Feature Learning and Unsupervised Clustering"</title>
+<title>Demo page for "Adversarial Feature Learning and Unsupervised Clustering based Speech Synthesis for Found Data with Acoustic and Textual Noise"</title>
 </head>
 <body>
 
-<h2 align="center"> Audio samples for "Sequence-to-sequence based Speech Synthesis for Noisy Found Data with Adversarial Feature Learning and Unsupervised Clustering"</h2>
+<h2 align="center"> Audio samples for "Adversarial Feature Learning and Unsupervised Clustering based Speech Synthesis for Found Data with Acoustic and Textual Noise"</h2>
 <div><b>Authors:</b> Shan Yang, Yuxuan Wang, Lei Xie</div>
-<div><b>Abstract:</b> Attention-based sequence-to-sequence (seq2seq) speech synthesis has achieved extraordinary performance. But a studio-quality corpus with manual transcription is necessary to train such seq2seq systems. In this paper, we propose an approach to build high-quality and stable seq2seq based speech synthesis system using challenging found data, where training speech contains noisy interferences (speech-side noise) and texts are imperfect speech recognition transcripts (text-side noise). To deal with text-side noise, we propose a VQVAE based heuristic method to compensate the erroneous linguistic feature with phonetic information learned directly from speech. As for the speech-side noise, we propose to learn a noise-independent feature in the auto-regressive decoder through adversarial training and data augmentation, which does not need an extra speech enhancement model. Experiments show the effectiveness of the proposed approaches in dealing with text-side and speech-side noise. Surpassing the denoising approach based on a state-of-the-art speech enhancement model, our system built on noisy found data can synthesize clean and high-quality speech with MOS close to the system built on the clean counterpart.
+<div><b>Abstract:</b> Attention-based sequence-to-sequence (seq2seq) speech synthesis has achieved extraordinary performance. But a studio-quality corpus with manual transcription is necessary to train such seq2seq systems. In this paper, we propose an approach to build high-quality and stable seq2seq based speech synthesis system using challenging found data, where training speech contains noisy interferences (acoustic noise) and texts are imperfect speech recognition transcripts (textual noise). To deal with text-side noise, we propose a VQVAE based heuristic method to compensate erroneous linguistic feature with phonetic information learned directly from speech. As for the speech-side noise, we propose to learn a noise-independent feature in the auto-regressive decoder through adversarial training and data augmentation, which does not need an extra speech enhancement model. Experiments show the effectiveness of the proposed approach in dealing with text-side and speech-side noise. Surpassing the denoising approach based on a state-of-the-art speech enhancement model, our system built on noisy found data can synthesize clean and high-quality speech with MOS close to the system built on the clean counterpart.
  </div>
 
 <h4>If you encounter slow speed to load this webpage, please visit our <a href="http://www.npu-aslp.org/yangshan/found-data/" target='_blank'>mirror page</a> or download the <a href="http://www.npu-aslp.org/yangshan/found-data.zip">.zip</a> file and listen them locally.</h4>
@@ -230,49 +230,49 @@
 <tr>
     <td><span></span></td>
     <td><span>6.1. 现在宝宝还经常踢我，很活泼。<span></td>
-    <td><span>6.2. 初步统计全市经济损失约五点四三八亿元。</span></td>
+    <td><span>6.2. 多趟高铁列车因此出现延误。</span></td>
     <td><span>6.3. 萨科齐可能依据隆盖的报告决定是否提早撤军。<span></td>
 </tr>
 <tr>
     <td width="320">Recording</td>
     <td><audio controls><source src="samples/recording/004520.wav"></audio></td>
-    <td><audio controls><source src="samples/recording/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/recording/000777.wav"></audio></td>
     <td><audio controls><source src="samples/recording/005358.wav"></audio></td>
 </tr>
 <tr>
     <td>Top-line (system A)</td>
     <td><audio controls><source src="samples/system_a/004520.wav"></audio></td>
-    <td><audio controls><source src="samples/system_a/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/system_a/000777.wav"></audio></td>
     <td><audio controls><source src="samples/system_a/005358.wav"></audio></td>
 </tr>
 <tr>
     <td>4 dB SNR and 23.3% WER (system H)</td>
     <td><audio controls><source src="samples/system_h/004520.wav"></audio></td>
-    <td><audio controls><source src="samples/system_h/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/system_h/000777.wav"></audio></td>
     <td><audio controls><source src="samples/system_h/005358.wav"></audio></td>
 </tr>
 <tr>
     <td>Unsupervised pre-enhancement (system Separabl)</td>
     <td><audio controls><source src="samples/separabl/004520.wav"></audio></td>
-    <td><audio controls><source src="samples/separabl/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/separabl/000777.wav"></audio></td>
     <td><audio controls><source src="samples/separabl/005358.wav"></audio></td>
 </tr>
 <tr>
     <td>Supervised pre-enhancement (system DCUnet)</td>
     <td><audio controls><source src="samples/dcunet/004520.wav"></audio></td>
-    <td><audio controls><source src="samples/dcunet/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/dcunet/000777.wav"></audio></td>
     <td><audio controls><source src="samples/dcunet/005358.wav"></audio></td>
 </tr>
 <tr>
     <td>Sentence-level adversarial feature learning (system Adv_sen)</td>
     <td><audio controls><source src="samples/adv_sen/004520.wav"></audio></td>
-    <td><audio controls><source src="samples/adv_sen/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/adv_sen/000777.wav"></audio></td>
     <td><audio controls><source src="samples/adv_sen/005358.wav"></audio></td>
 </tr>
 <tr>
     <td>Frame-level adversarial feature learning (system Adv_frame)</td>
     <td><audio controls><source src="samples/adv_frame/004520.wav"></audio></td>
-    <td><audio controls><source src="samples/adv_frame/004562.wav"></audio></td>
+    <td><audio controls><source src="samples/adv_frame/000777.wav"></audio></td>
     <td><audio controls><source src="samples/adv_frame/005358.wav"></audio></td>
 </tr>
 </table>
