@@ -4,7 +4,7 @@
     
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>TODO: title</title>
+<title>Low Bit-Rate Speech Coding with VQ-VAE and GAN</title>
 <meta name="generator" content="Jekyll v3.9.0">
 <meta property="og:title" content="TODO: title">
 <meta property="og:locale" content="en_US">
@@ -26,68 +26,529 @@
     </section>
 
     <section class="main-content">
-      <h1 id="-vara-tts-non-autoregressive-text-to-speech-synthesis-based-on-very-deep-vae-with-residual-attention-"><center> TODO: title </center></h1>
+      <h1 id="-vara-tts-non-autoregressive-text-to-speech-synthesis-based-on-very-deep-vae-with-residual-attention-"><center> Low Bit-Rate Speech Coding with VQ-VAE and GAN </center></h1>
 
-<center> TODO: author </center>
+<center> Yi Chen <sup>1</sup>, Shan Yang <sup>2</sup>, Na Hu <sup>2</sup>, Lei Xie <sup>1</sup>, Dan Su <sup>2</sup> </center>
+<center>{chnychen, shaanyang, ninahu, dansu}@tencent.com, lxie@nwpu.edu.cn </center>
+<center> <sup>1</sup> Audio, Speech and Language Processing Group (ASLP@NPU), School of Computer Science, Northwestern Polytechnical University, Xi'an, China</center>
+<center> <sup>2</sup> Tencent AI Lab, China</center>
 
 <h2 id="abstract">Abstract</h2>
-<p>TODO: abstract.</p>
-
+<p>  Speech coding aims at compressing digital speech signals with fewer bits and reconstructing it back to raw signals. 
+  But conventional codecs usually need a high bit-rate to achieve reconstructed speech of high quality. 
+  In this paper, we propose an end-to-end generative codec with a VQ-VAE based auto-encoder and the generative adversarial network (GAN), 
+  which achieves high-fidelity reconstructed speech at a low bit-rate about 2 kb/s.  
+  The compression process of speech coding is carried out by a down-sampling module of the encoder and a learnable discrete codebook. 
+  Our experiments confirm the effectiveness of the proposed model in both objective and subjective tests, 
+  which significantly outperforms the conventional codecs at low bit-rate in terms of speech quality and speaker similarity.</p>
 
 <h2>Item 1</h2>
 
-<p>Text:</p>
-
-<audio src="audio.wav" controls="" preload=""></audio>
-
-<h2>Item 2</h2>
-
-<p>Text 2</p>
+<p>Text:  I never see lou's scythe over here. </p>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center"><strong>center</strong></th>
-      <th style="text-align: right"><strong>right</strong></th>
-      <th style="text-align: left"><strong>left</strong></th>
+      <th style="text-align: center"><strong>Reference</strong></th>
+      <th style="text-align: center"><strong>NC-2250</strong></th>
+      <th style="text-align: center"><strong>NC-2000</strong></th>
+      <th style="text-align: center"><strong>NC-1000</strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/Reference/237-134493-0010.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2250/237-134493-0010.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2000/237-134493-0010.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-1000/237-134493-0010.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+
+      <th style="text-align: center"><strong>NC-500</strong></th>
+      <th style="text-align: center"><strong>Opus-4k</strong></th>
+      <th style="text-align: center"><strong>Opus-6k</strong></th>
+      <th style="text-align: center"><strong>Speex-4K</strong></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/NC-500/237-134493-0010.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-4k/237-134493-0010.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-6k/237-134493-0010.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/speex-4k/237-134493-0010.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2>Item 2</h2>
+
+<p>Text: On either side of the road for a mile before you reached the foot of the hill stood tall osage orange hedges, 
+         their glossy green marking off the yellow fields.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Reference</strong></th>
+      <th style="text-align: center"><strong>NC-2250</strong></th>
+      <th style="text-align: center"><strong>NC-2000</strong></th>
+      <th style="text-align: center"><strong>NC-1000</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/Reference/237-134493-0016.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2250/237-134493-0016.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2000/237-134493-0016.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-1000/237-134493-0016.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+
+      <th style="text-align: center"><strong>NC-500</strong></th>
+      <th style="text-align: center"><strong>Opus-4k</strong></th>
+      <th style="text-align: center"><strong>Opus-6k</strong></th>
+      <th style="text-align: center"><strong>Speex-4K</strong></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/NC-500/237-134493-0016.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-4k/237-134493-0016.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-6k/237-134493-0016.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/speex-4k/237-134493-0016.wav" controls="" preload=""></audio></td>
     </tr>
   </tbody>
 </table>
 
 <h2>Item 3</h2>
 
-<p> Description</p>
+<p>Text: Well now ennis i declare you have a head and so has my stick.</p>
+
 <table>
   <thead>
     <tr>
-      <th style="text-align: left"><strong>method 1</strong></th>
-      <th style="text-align: left"><strong>method 2</strong></th>
-      <th style="text-align: left"><strong>method 3</strong></th>
+      <th style="text-align: center"><strong>Reference</strong></th>
+      <th style="text-align: center"><strong>NC-2250</strong></th>
+      <th style="text-align: center"><strong>NC-2000</strong></th>
+      <th style="text-align: center"><strong>NC-1000</strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/Reference/1089-134686-0010.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2250/1089-134686-0010.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2000/1089-134686-0010.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-1000/1089-134686-0010.wav" controls="" preload=""></audio></td>
     </tr>
-    <tr>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-    </tr>
+  </tbody>
 
+  <thead>
+    <tr>
+
+      <th style="text-align: center"><strong>NC-500</strong></th>
+      <th style="text-align: center"><strong>Opus-4k</strong></th>
+      <th style="text-align: center"><strong>Opus-6k</strong></th>
+      <th style="text-align: center"><strong>Speex-4K</strong></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/NC-500/1089-134686-0010.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-4k/1089-134686-0010.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-6k/1089-134686-0010.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/speex-4k/1089-134686-0010.wav" controls="" preload=""></audio></td>
+    </tr>
   </tbody>
 </table>
 
 
+<h2>Item 4</h2>
+
+<p>Text: A great saint saint francis xavier. </p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Reference</strong></th>
+      <th style="text-align: center"><strong>NC-2250</strong></th>
+      <th style="text-align: center"><strong>NC-2000</strong></th>
+      <th style="text-align: center"><strong>NC-1000</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/Reference/1089-134686-0036.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2250/1089-134686-0036.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2000/1089-134686-0036.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-1000/1089-134686-0036.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+
+      <th style="text-align: center"><strong>NC-500</strong></th>
+      <th style="text-align: center"><strong>Opus-4k</strong></th>
+      <th style="text-align: center"><strong>Opus-6k</strong></th>
+      <th style="text-align: center"><strong>Speex-4K</strong></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/NC-500/1089-134686-0036.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-4k/1089-134686-0036.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-6k/1089-134686-0036.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/speex-4k/1089-134686-0036.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2>Item 5</h2>
+
+<p>Text: He had the faith in him that moves mountains.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Reference</strong></th>
+      <th style="text-align: center"><strong>NC-2250</strong></th>
+      <th style="text-align: center"><strong>NC-2000</strong></th>
+      <th style="text-align: center"><strong>NC-1000</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/Reference/1089-134686-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2250/1089-134686-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2000/1089-134686-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-1000/1089-134686-0035.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+
+      <th style="text-align: center"><strong>NC-500</strong></th>
+      <th style="text-align: center"><strong>Opus-4k</strong></th>
+      <th style="text-align: center"><strong>Opus-6k</strong></th>
+      <th style="text-align: center"><strong>Speex-4K</strong></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/NC-500/1089-134686-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-4k/1089-134686-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-6k/1089-134686-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/speex-4k/1089-134686-0035.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<h2>Item 6</h2>
+
+<p>Text: On friday confession will be heard all the afternoon after beads. </p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Reference</strong></th>
+      <th style="text-align: center"><strong>NC-2250</strong></th>
+      <th style="text-align: center"><strong>NC-2000</strong></th>
+      <th style="text-align: center"><strong>NC-1000</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/Reference/1089-134686-0029.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2250/1089-134686-0029.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2000/1089-134686-0029.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-1000/1089-134686-0029.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+
+      <th style="text-align: center"><strong>NC-500</strong></th>
+      <th style="text-align: center"><strong>Opus-4k</strong></th>
+      <th style="text-align: center"><strong>Opus-6k</strong></th>
+      <th style="text-align: center"><strong>Speex-4K</strong></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/NC-500/1089-134686-0029.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-4k/1089-134686-0029.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-6k/1089-134686-0029.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/speex-4k/1089-134686-0029.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2>Item 7</h2>
+<p>Text: The first of our vague but indubitable data is that there is knowledge of the past. </p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Reference</strong></th>
+      <th style="text-align: center"><strong>NC-2250</strong></th>
+      <th style="text-align: center"><strong>NC-2000</strong></th>
+      <th style="text-align: center"><strong>NC-1000</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/Reference/8230-279154-0024.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2250/8230-279154-0024.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2000/8230-279154-0024.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-1000/8230-279154-0024.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+
+      <th style="text-align: center"><strong>NC-500</strong></th>
+      <th style="text-align: center"><strong>Opus-4k</strong></th>
+      <th style="text-align: center"><strong>Opus-6k</strong></th>
+      <th style="text-align: center"><strong>Speex-4K</strong></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/NC-500/8230-279154-0024.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-4k/8230-279154-0024.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-6k/8230-279154-0024.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/speex-4k/8230-279154-0024.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+<h2>Item 8</h2>
+
+<p>Text: This knowledge is memory in one sense though in another it is not.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Reference</strong></th>
+      <th style="text-align: center"><strong>NC-2250</strong></th>
+      <th style="text-align: center"><strong>NC-2000</strong></th>
+      <th style="text-align: center"><strong>NC-1000</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/Reference/8230-279154-0039.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2250/8230-279154-0039.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2000/8230-279154-0039.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-1000/8230-279154-0039.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+
+      <th style="text-align: center"><strong>NC-500</strong></th>
+      <th style="text-align: center"><strong>Opus-4k</strong></th>
+      <th style="text-align: center"><strong>Opus-6k</strong></th>
+      <th style="text-align: center"><strong>Speex-4K</strong></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/NC-500/8230-279154-0039.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-4k/8230-279154-0039.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-6k/8230-279154-0039.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/speex-4k/8230-279154-0039.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+<h2>Item 9</h2>
+
+<p>Text: Thus no knowledge as to the past is to be derived from the feeling of familiarity alone. </p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Reference</strong></th>
+      <th style="text-align: center"><strong>NC-2250</strong></th>
+      <th style="text-align: center"><strong>NC-2000</strong></th>
+      <th style="text-align: center"><strong>NC-1000</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/Reference/8230-279154-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2250/8230-279154-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2000/8230-279154-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-1000/8230-279154-0035.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+
+      <th style="text-align: center"><strong>NC-500</strong></th>
+      <th style="text-align: center"><strong>Opus-4k</strong></th>
+      <th style="text-align: center"><strong>Opus-6k</strong></th>
+      <th style="text-align: center"><strong>Speex-4K</strong></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/NC-500/8230-279154-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-4k/8230-279154-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-6k/8230-279154-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/speex-4k/8230-279154-0035.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Item 10</h2>
+
+<p>Text: He started at the thought he hurried forth sadly. </p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Reference</strong></th>
+      <th style="text-align: center"><strong>NC-2250</strong></th>
+      <th style="text-align: center"><strong>NC-2000</strong></th>
+      <th style="text-align: center"><strong>NC-1000</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/Reference/1995-1837-0011.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2250/1995-1837-0011.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2000/1995-1837-0011.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-1000/1995-1837-0011.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+
+      <th style="text-align: center"><strong>NC-500</strong></th>
+      <th style="text-align: center"><strong>Opus-4k</strong></th>
+      <th style="text-align: center"><strong>Opus-6k</strong></th>
+      <th style="text-align: center"><strong>Speex-4K</strong></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/NC-500/1995-1837-0011.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-4k/1995-1837-0011.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-6k/1995-1837-0011.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/speex-4k/1995-1837-0011.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Item 11</h2>
+
+<p>Text: She had been born within its borders within its borders she had lived and grown and within its borders she had met her love.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Reference</strong></th>
+      <th style="text-align: center"><strong>NC-2250</strong></th>
+      <th style="text-align: center"><strong>NC-2000</strong></th>
+      <th style="text-align: center"><strong>NC-1000</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/Reference/1995-1837-0026.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2250/1995-1837-0026.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2000/1995-1837-0026.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-1000/1995-1837-0026.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+
+      <th style="text-align: center"><strong>NC-500</strong></th>
+      <th style="text-align: center"><strong>Opus-4k</strong></th>
+      <th style="text-align: center"><strong>Opus-6k</strong></th>
+      <th style="text-align: center"><strong>Speex-4K</strong></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/NC-500/1995-1837-0026.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-4k/1995-1837-0026.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-6k/1995-1837-0026.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/speex-4k/1995-1837-0026.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Item 12</h2>
+
+<p>Text: The lagoon had been level with the dykes a week ago and now. </p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Reference</strong></th>
+      <th style="text-align: center"><strong>NC-2250</strong></th>
+      <th style="text-align: center"><strong>NC-2000</strong></th>
+      <th style="text-align: center"><strong>NC-1000</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/Reference/1995-1837-0009.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2250/1995-1837-0009.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-2000/1995-1837-0009.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/NC-1000/1995-1837-0009.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+
+      <th style="text-align: center"><strong>NC-500</strong></th>
+      <th style="text-align: center"><strong>Opus-4k</strong></th>
+      <th style="text-align: center"><strong>Opus-6k</strong></th>
+      <th style="text-align: center"><strong>Speex-4K</strong></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/NC-500/1995-1837-0009.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-4k/1995-1837-0009.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/opus-6k/1995-1837-0009.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/speex-4k/1995-1837-0009.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
 
       <footer class="site-footer">
         
