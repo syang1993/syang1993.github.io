@@ -4,12 +4,12 @@
     
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>TODO: title</title>
+<title>Learning Speech Representations from GAN-based Auto-encoder For High Fidelity Flow-based Speech Synthesis</title>
 <meta name="generator" content="Jekyll v3.9.0">
 <meta property="og:title" content="TODO: title">
 <meta property="og:locale" content="en_US">
-<link rel="canonical" href="https://syang1993.github.io/test/">
-<meta property="og:url" content="https://syang1993.github.io/test/">
+<link rel="canonical" href="https://syang1993.github.io/flow_wavegan/">
+<meta property="og:url" content="https://syang1993.github.io/flow_wavegan/">
 <meta name="twitter:card" content="summary">
 <!-- End Jekyll SEO tag -->
 
@@ -26,68 +26,79 @@
     </section>
 
     <section class="main-content">
-      <h1 id="-vara-tts-non-autoregressive-text-to-speech-synthesis-based-on-very-deep-vae-with-residual-attention-"><center> TODO: title </center></h1>
+      <h1 id="-vara-tts-non-autoregressive-text-to-speech-synthesis-based-on-very-deep-vae-with-residual-attention-"><center> Learning Speech Representations from GAN-based Auto-encoder For High Fidelity Flow-based Speech Synthesis </center></h1>
 
-<center> TODO: author </center>
+<center> Jian Cong, Shan Yang, Lei Xie, Dan Su </center>
 
 <h2 id="abstract">Abstract</h2>
-<p>TODO: abstract.</p>
+<p>In this work, we proposed to using GAN-based variational auto-encoder to learning speech representation in expected distribution. The speech representation can be reconstruct to the waveform by the decoder in VAE and be the target of acoustic model. We demonstrate that the flow-based acoustic model can exactly maximize the distribution of that representation outperforming the </p>
 
 
-<h2>Item 1</h2>
-
-<p>Text:</p>
-
-<audio src="audio.wav" controls="" preload=""></audio>
-
-<h2>Item 2</h2>
-
-<p>Text 2</p>
+<h2>Single Speaker (LJ Speech Dataset)</h2>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center"><strong>center</strong></th>
-      <th style="text-align: right"><strong>right</strong></th>
-      <th style="text-align: left"><strong>left</strong></th>
+      <th style="text-align: center"><strong>Ground Truth</strong></th>
+      <th style="text-align: center"><strong>Hifi-GAN Copy-syn</strong></th>
+      <th style="text-align: center"><strong>Glow-TTS + Hifi-GAN</strong></th>
+      <th style="text-align: center"><strong>Our Generator Copy-syn</strong></th>
+      <th style="text-align: center"><strong>Glow-TTS + Our Generator</strong></th>
+      <th style="text-align: center"><strong>Flow-WaveGan Copy-syn</strong></th>
+      <th style="text-align: center"><strong>Flow-WaveGan</strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/ground_truth/LJ050-0069.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_hifigan/LJ050-0069.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/e2e_hifigan/LJ050-0069.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_ourg/LJ050-0069.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/e2e_ourg/LJ050-0069.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_flow_wavegan/LJ050-0069.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/flow_wavegan/LJ050-0069.wav" controls="" preload=""></audio></td>
     </tr>
+    <tr>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/ground_truth/LJ049-0154.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_hifigan/LJ049-0154.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/e2e_hifigan/LJ049-0154.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_ourg/LJ049-0154.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/e2e_ourg/LJ049-0154.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_flow_wavegan/LJ049-0154.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/flow_wavegan/LJ049-0154.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/ground_truth/LJ046-0033.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_hifigan/LJ046-0033.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/e2e_hifigan/LJ046-0033.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_ourg/LJ046-0033.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/e2e_ourg/LJ046-0033.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_flow_wavegan/LJ046-0033.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/flow_wavegan/LJ046-0033.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/ground_truth/LJ031-0014.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_hifigan/LJ031-0014.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/e2e_hifigan/LJ031-0014.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_ourg/LJ031-0014.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/e2e_ourg/LJ031-0014.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_flow_wavegan/LJ031-0014.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/flow_wavegan/LJ031-0014.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/ground_truth/LJ019-0368.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_hifigan/LJ019-0368.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/e2e_hifigan/LJ019-0368.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_ourg/LJ019-0368.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/e2e_ourg/LJ019-0368.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/copsyn_flow_wavegan/LJ019-0368.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio controls style="width: 160px;" src="samples/flow_wavegan/LJ019-0368.wav" controls="" preload=""></audio></td>
   </tbody>
 </table>
 
-<h2>Item 3</h2>
+<h2>Multi speaker (VCTK Dataset)</h2>
 
-<p> Description</p>
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left"><strong>method 1</strong></th>
-      <th style="text-align: left"><strong>method 2</strong></th>
-      <th style="text-align: left"><strong>method 3</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-    </tr>
-
-  </tbody>
-</table>
-
-
+<p>TODO</p>
 
       <footer class="site-footer">
         
