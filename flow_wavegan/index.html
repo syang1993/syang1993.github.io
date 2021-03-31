@@ -36,13 +36,14 @@
 <h2 id="abstract">Abstract</h2>
 <p>In this work, we proposed to using GAN-based variational auto-encoder to learning speech representation in expected distribution. The speech representation can be reconstruct to the waveform by the decoder in VAE and be the target of acoustic model. We demonstrate that the flow-based acoustic model can exactly maximize the distribution of that representation outperforming the </p>
 
-<p class="toc_title">Contents</p>
+<h2><p class="toc_title">Contents</p></h2>
 <div id="toc_container">
 <ul>
   <li><a href="#1">Single speaker (LJSpeech)</a></li>
   <ul>
-    <li><a href="#1.1">Reconstruction to waveform</a></li>
+    <li><a href="#1.1">Waveform reconstruction</a></li>
     <li><a href="#1.2">End-to-end Speech Synthesis</a></li>
+    <li><a href="#1.3">Synthesis for unseen speaekrs</a></li>
   </ul>
   <li><a href="#2">Multi speaker (VCTK)</a></li>
   <ul>
@@ -55,7 +56,10 @@
     <li><a href="#3.2">Compare with the glow-tts demos</a></li>
   </ul>
 </ul>
+Annotation: The <b>inner-GAN</b> indicates that the decoder in our VAE and the discriminators are used as a GAN-based vocoder, which receives Mel-spectrum as input. <b>WaveGAN</b> means the VAE + GAN model, which can be used to reconstruct input speech.
 </div>
+<br>
+<br>
 
 <a name="1"><h2>1. Single speaker (LJSpeech)</h2></a>
 <a name="1.1"><h3>1.1 Reconstruction to waveform from speech representations</h3></a>
@@ -63,9 +67,9 @@
   <thead>
     <tr>
       <th style="text-align: center"><strong>Ground Truth</strong></th>
-      <th style="text-align: center"><strong>Hifi-GAN(Mel)</strong></th>
-      <th style="text-align: center"><strong>Inner-GAN(Mel)</strong></th>
-      <th style="text-align: center"><strong>WaveGan(Z)</strong></th>
+      <th style="text-align: center"><strong>Hifi-GAN (Mel)</strong></th>
+      <th style="text-align: center"><strong>Inner-GAN (Mel)</strong></th>
+      <th style="text-align: center"><strong>WaveGAN</strong></th>
     </tr>
   </thead>
   <tbody>
@@ -106,9 +110,9 @@
   <thead>
     <tr>
       <th style="text-align: center"><strong>Ground Truth</strong></th>
-      <th style="text-align: center"><strong>Glow-TTS + Hifi-GAN(Mel)</strong></th>
-      <th style="text-align: center"><strong>Glow-TTS + Inner-GAN(Mel)</strong></th>
-      <th style="text-align: center"><strong>Flow-WaveGan(Z)</strong></th>
+      <th style="text-align: center"><strong>Glow-TTS + Hifi-GAN (Mel)</strong></th>
+      <th style="text-align: center"><strong>Glow-TTS + Inner-GAN (Mel)</strong></th>
+      <th style="text-align: center"><strong>Flow-WaveGAN (Z)</strong></th>
     </tr>
   </thead>
   <tbody>
@@ -150,9 +154,9 @@
   <thead>
     <tr>
       <th style="text-align: center"><strong>Ground Truth</strong></th>
-      <th style="text-align: center"><strong>Hifi-GAN(Mel)</strong></th>
-      <th style="text-align: center"><strong>Inner-GAN(Mel)</strong></th>
-      <th style="text-align: center"><strong>WaveGan(Z)</strong></th>
+      <th style="text-align: center"><strong>Hifi-GAN (Mel)</strong></th>
+      <th style="text-align: center"><strong>Inner-GAN (Mel)</strong></th>
+      <th style="text-align: center"><strong>WaveGAN</strong></th>
     </tr>
   </thead>
   <tbody>
@@ -193,9 +197,9 @@
   <thead>
     <tr>
       <th style="text-align: center"><strong>Ground Truth</strong></th>
-      <th style="text-align: center"><strong>Glow-TTS + Hifi-GAN(Mel)</strong></th>
-      <th style="text-align: center"><strong>Glow-TTS + Inner-GAN(Mel)</strong></th>
-      <th style="text-align: center"><strong>Flow-WaveGan(Z)</strong></th>
+      <th style="text-align: center"><strong>Glow-TTS + Hifi-GAN (Mel)</strong></th>
+      <th style="text-align: center"><strong>Glow-TTS + Inner-GAN (Mel)</strong></th>
+      <th style="text-align: center"><strong>Flow-WaveGAN (Z)</strong></th>
     </tr>
   </thead>
   <tbody>
@@ -217,7 +221,20 @@
       <td style="text-align: left"><audio src="samples_vctk/e2e_ourg/p335_409.wav" controls="" preload=""></audio></td>
       <td style="text-align: left"><audio src="samples_vctk/flow_wavegan/p335_409.wav" controls="" preload=""></audio></td>
     </tr>
-    <th style="text-align: center"><strong>Unseen speaker</strong></th>
+  </tbody>
+</table>
+<br>
+<a name="1.3"><h3>1.3 Synthesis for unseen speaekrs</h3></a>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Ground Truth</strong></th>
+      <th style="text-align: center"><strong>Glow-TTS + Hifi-GAN (Mel)</strong></th>
+      <th style="text-align: center"><strong>Glow-TTS + Inner-GAN (Mel)</strong></th>
+      <th style="text-align: center"><strong>Flow-WaveGAN (Z)</strong></th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
       <td style="text-align: left"><audio src="samples_vctk/ground_truth/p243_327.wav" controls="" preload=""></audio></td>
       <td style="text-align: left"><audio src="samples_vctk/e2e_hifigan/p243_327.wav" controls="" preload=""></audio></td>
@@ -235,14 +252,14 @@
 <br>
 <a name="3"><h2>3. Additional comparison</h2></a>
 <a name="3.1"><h3>3.1 Compare with the hifigan demos</h3></a>
-<p> We compare the demos of our proposed Flow-WaveGan with the demos from official HiFi-GAN (<a href="https://jik876.github.io/hifi-gan-demo/">https://jik876.github.io/hifi-gan-demo/</a>)</p>
+<p> We compare the demos of our proposed Flow-WaveGAN with the demos from official HiFi-GAN (<a href="https://jik876.github.io/hifi-gan-demo/">https://jik876.github.io/hifi-gan-demo/</a>)</p>
 <table>
   <thead>
     <tr>
       <th style="text-align: center"><strong>Ground Truth</strong></th>
       <th style="text-align: center"><strong>Tacotron2 + Hifi-GAN</strong></th>
       <th style="text-align: center"><strong>Tacotron2 + Hifi-GAN(fine-tuned)</strong></th>
-      <th style="text-align: center"><strong>Flow-WaveGan</strong></th>
+      <th style="text-align: center"><strong>Flow-WaveGAN</strong></th>
     </tr>
   </thead>
   <tbody>
@@ -280,13 +297,13 @@
 
 <br>
 <a name="3.2"><h3>3.2 Compare with the glow-tts demos</h3></a>
-<p> We compare the demos of our proposed Flow-WaveGan with the demos from official Glow-TTS (<a href="https://jaywalnut310.github.io/glow-tts-demo/">https://jaywalnut310.github.io/glow-tts-demo/</a>)</p>
+<p> We compare the demos of our proposed Flow-WaveGAN with the demos from official Glow-TTS (<a href="https://jaywalnut310.github.io/glow-tts-demo/">https://jaywalnut310.github.io/glow-tts-demo/</a>)</p>
 <table>
   <thead>
     <tr>
       <th style="text-align: center"><strong>Ground Truth</strong></th>
       <th style="text-align: center"><strong>Glow-TTS + WaveGlow</strong></th>
-      <th style="text-align: center"><strong>Flow-WaveGan</strong></th>
+      <th style="text-align: center"><strong>Flow-WaveGAN</strong></th>
     </tr>
   </thead>
   <tbody>
