@@ -28,7 +28,10 @@
     <section class="main-content">
       <h1 id="-vara-tts-non-autoregressive-text-to-speech-synthesis-based-on-very-deep-vae-with-residual-attention-"><center> Learning Speech Representations from GAN-based Auto-encoder For High Fidelity Flow-based Speech Synthesis </center></h1>
 
-<center> Jian Cong, Shan Yang, Lei Xie, Dan Su </center>
+<center> Jian Cong<sup>1</sup>, Shan Yang<sup>2</sup>, Lei Xie<sup>1</sup>, Dan Su<sup>2</sup> </center>
+<center> <sup>1</sup> Audio, Speech and Language Processing Group (ASLP@NPU), School of Computer Science, Northwestern Polytechnical University, Xi'an, China</center>
+<center> <sup>2</sup> Tencent AI Lab, China</center>
+
 
 <h2 id="abstract">Abstract</h2>
 <p>In this work, we proposed to using GAN-based variational auto-encoder to learning speech representation in expected distribution. The speech representation can be reconstruct to the waveform by the decoder in VAE and be the target of acoustic model. We demonstrate that the flow-based acoustic model can exactly maximize the distribution of that representation outperforming the </p>
@@ -97,6 +100,7 @@
       <td style="text-align: left"><audio src="samples/copsyn_flow_wavegan/LJ019-0368.wav" controls="" preload=""></audio></td>
   </tbody>
 </table>
+<br>
 <a name="1.2"><h3>1.2 End-to-end Speech Synthesis</h3></a>
 <table>
   <thead>
@@ -139,6 +143,7 @@
       <td style="text-align: left"><audio src="samples/flow_wavegan/LJ019-0368.wav" controls="" preload=""></audio></td>
   </tbody>
 </table>
+<br>
 <a name="2"><h2>2. Multi-spekaer (VCTK)</h2></a>
 <a name="2.1"><h3>2.1 Reconstruction to waveform from speech representations</h3></a>
 <table>
@@ -182,6 +187,7 @@
       <td style="text-align: left"><audio src="samples_vctk/copsyn_flow_wavegan/p276_398.wav" controls="" preload=""></audio></td>
   </tbody>
 </table>
+<br>
 <a name="1.2"><h3>1.2 End-to-end Speech Synthesis</h3></a>
 <table>
   <thead>
@@ -226,9 +232,10 @@
   </tbody>
 </table>
 
+<br>
 <a name="3"><h2>3. Additional comparison</h2></a>
 <a name="3.1"><h3>3.1 Compare with the hifigan demos</h3></a>
-<p> We compare the demos of our proposed Flow-WaveGan with the demos from Glow-TTS(<a href="https://jik876.github.io/hifi-gan-demo/">https://jik876.github.io/hifi-gan-demo/</a>)</p>
+<p> We compare the demos of our proposed Flow-WaveGan with the demos from official HiFi-GAN (<a href="https://jik876.github.io/hifi-gan-demo/">https://jik876.github.io/hifi-gan-demo/</a>)</p>
 <table>
   <thead>
     <tr>
@@ -271,8 +278,9 @@
   </tbody>
 </table>
 
-<a name="3.2"><h3>3.1 Compare with the glow-tts demos</h3></a>
-<p> We compare the demos of our proposed Flow-WaveGan with the demos from Glow-TTS(<a href="https://jaywalnut310.github.io/glow-tts-demo/">https://jaywalnut310.github.io/glow-tts-demo/</a>)</p>
+<br>
+<a name="3.2"><h3>3.2 Compare with the glow-tts demos</h3></a>
+<p> We compare the demos of our proposed Flow-WaveGan with the demos from official Glow-TTS (<a href="https://jaywalnut310.github.io/glow-tts-demo/">https://jaywalnut310.github.io/glow-tts-demo/</a>)</p>
 <table>
   <thead>
     <tr>
