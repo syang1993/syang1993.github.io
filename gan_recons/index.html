@@ -4,7 +4,7 @@
     
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>TODO: title</title>
+<title>Improving  Low Bit-Rate Speech Coding Through GAN-based Speech Reconstruction</title>
 <meta name="generator" content="Jekyll v3.9.0">
 <meta property="og:title" content="TODO: title">
 <meta property="og:locale" content="en_US">
@@ -25,77 +25,149 @@
       
     </section>
 
-    <section class="main-content">
-      <h1 id="-vara-tts-non-autoregressive-text-to-speech-synthesis-based-on-very-deep-vae-with-residual-attention-"><center> TODO: title </center></h1>
+<section class="main-content">
+      <h1 id=""><center> Improving Low Bit-Rate Speech Coding Through GAN-based Speech Reconstruction</center></h1>
 
-<center> TODO: author </center>
+<center> Shan Yang, Shi-Xiong ZHANG, Yi Chen, Dan Su, Dong Yu </center>
+<center> Tencent AI Lab, China</center>
+
 
 <h2 id="abstract">Abstract</h2>
-<p>TODO: abstract.</p>
+<p>In order to represent and transmit speech signals efficiently, speech codecs tend to compress speech into compact bit-streams, which are then decoded in the down-stream receivers to maintain the perceptual quality as much as possible. Traditional speech codecs require a high bit-rate to recover the quality of source speech, which leads to extra transmission costs. In this paper, we propose a GAN-based speech reconstruction module for repairing the loss of speech caused by the encoding and decoding process in existing codecs. The proposed method design an encoder to extract abstract information from lossy speech, and a decoder to compensate the perceptual information with generative adversarial networks during reconstructing process. Experimental results show that the proposed model significantly improves the quality of lossy speech from Opus at different low bit-rates, and it is also robust to unseen speakers. Our work provides an alternative way to achieve low bit-rate coding with high reconstructing quality. Unlike the recent low bit-rate neural generative codecs, the proposed method does not break the existing speech coding diagram in real applications.
+</p>
+<br><br>
 
-
-<h2>Item 1</h2>
-
-<p>Text:</p>
-
-<audio src="audio.wav" controls="" preload=""></audio>
-
-<h2>Item 2</h2>
-
-<p>Text 2</p>
-
+<a name="1"><h2>1. StudioSpeech</h2></a>
 <table>
   <thead>
     <tr>
-      <th style="text-align: center"><strong>center</strong></th>
-      <th style="text-align: right"><strong>right</strong></th>
-      <th style="text-align: left"><strong>left</strong></th>
+      <th style="text-align: center"><strong>Bit rate</strong></th>
+      <th style="text-align: center"><strong>Source speech</strong></th>
+      <th style="text-align: center"><strong>Opus codec</strong></th>
+      <th style="text-align: center"><strong>GAN reconstruction</strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left" rowspan=2>4 kb/s</td>
+      <td style="text-align: left"><audio src="samples/studio/reference/female1.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-4k/female1.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-gan-4k/female1.wav" controls="" preload=""></audio></td>
     </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/studio/reference/male1.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-4k/male1.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-gan-4k/male1.wav" controls="" preload=""></audio></td>
+    </tr>
+      <tr>
+      <td style="text-align: left" rowspan=2>6 kb/s</td>
+      <td style="text-align: left"><audio src="samples/studio/reference/female2.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-6k/female2.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-gan-6k/female2.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/studio/reference/male2.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-6k/male2.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-gan-6k/male2.wav" controls="" preload=""></audio></td>
+    </tr>
+   <tr>
+      <td style="text-align: left" rowspan=2>8 kb/s</td>
+      <td style="text-align: left"><audio src="samples/studio/reference/female3.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-8k/female3.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-gan-8k/female3.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/studio/reference/male3_1.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-8k/male3_1.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-gan-8k/male3_1.wav" controls="" preload=""></audio></td>
+    </tr>
+   <tr>
+      <td style="text-align: left" rowspan=2>10 kb/s</td>
+      <td style="text-align: left"><audio src="samples/studio/reference/female4.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-10k/female4.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-gan-10k/female4.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/studio/reference/male3_2.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-10k/male3_2.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/studio/opus-gan-10k/male3_2.wav" controls="" preload=""></audio></td>
+    </tr>
+
   </tbody>
 </table>
-
-<h2>Item 3</h2>
-
-<p> Description</p>
+<br>
+<a name="2"><h2>2. AudioBook</h2></a>
+<h4>GAN-mix: bit-rate independent model.</h4>
 <table>
   <thead>
     <tr>
-      <th style="text-align: left"><strong>method 1</strong></th>
-      <th style="text-align: left"><strong>method 2</strong></th>
-      <th style="text-align: left"><strong>method 3</strong></th>
+      <th style="text-align: center"><strong>Bit rate</strong></th>
+      <th style="text-align: center"><strong>Source speech</strong></th>
+      <th style="text-align: center"><strong>Opus codec</strong></th>
+      <th style="text-align: center"><strong>GAN reconstruction</strong></th>
+      <th style="text-align: center"><strong>GAN-mix reconstruction</strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left" rowspan=2>4 kb/s</td>
+      <td style="text-align: left"><audio src="samples/audiobook/reference/672-122797-0011.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-4k/672-122797-0011.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-4k/672-122797-0011.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-mix-4k/672-122797-0011.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/reference/7729-102255-0030.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-4k/7729-102255-0030.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-4k/7729-102255-0030.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-mix-4k/7729-102255-0030.wav" controls="" preload=""></audio></td>
+    </tr>
+      <tr>
+      <td style="text-align: left" rowspan=2>6 kb/s</td>
+      <td style="text-align: left"><audio src="samples/audiobook/reference/1284-1180-0028.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-6k/1284-1180-0028.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-6k/1284-1180-0028.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-mix-6k/1284-1180-0028.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/audiobook/reference/7021-79759-0002.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-6k/7021-79759-0002.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-6k/7021-79759-0002.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-mix-6k/7021-79759-0002.wav" controls="" preload=""></audio></td>
+    </tr>
+   <tr>
+      <td style="text-align: left" rowspan=2>8 kb/s</td>
+      <td style="text-align: left"><audio src="samples/audiobook/reference/672-122797-0028.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-8k/672-122797-0028.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-8k/672-122797-0028.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-mix-8k/672-122797-0028.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/audiobook/reference/8230-279154-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-8k/8230-279154-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-8k/8230-279154-0035.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-mix-8k/8230-279154-0035.wav" controls="" preload=""></audio></td>
+    </tr>
+   <tr>
+      <td style="text-align: left" rowspan=2>10 kb/s</td>
+      <td style="text-align: left"><audio src="samples/audiobook/reference/4507-16021-0001.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-10k/4507-16021-0001.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-10k/4507-16021-0001.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-mix-10k/4507-16021-0001.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/audiobook/reference/908-31957-0005.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-10k/908-31957-0005.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-10k/908-31957-0005.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/audiobook/opus-gan-mix-10k/908-31957-0005.wav" controls="" preload=""></audio></td>
     </tr>
 
   </tbody>
 </table>
-
-
 
       <footer class="site-footer">
         
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
       </footer>
     </section>
-
-    
-  
-
 </body></html>
