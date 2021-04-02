@@ -34,7 +34,7 @@
 
 
 <h2 id="abstract">Abstract</h2>
-<p>In this work, we proposed to using GAN-based variational auto-encoder to learning speech representation in expected distribution. The speech representation can be reconstruct to the waveform by the decoder in VAE and be the target of acoustic model. We demonstrate that the flow-based acoustic model can exactly maximize the distribution of that representation outperforming the </p>
+<p>Current two-stage TTS framework typically integrates an acoustic model with a vocoder -- the acoustic model predicts a low resolution intermediate representation such as Mel-spectrum while the vocoder generates waveform from the intermediate representation. Although using the intermediate representation as a bridge, there still exists critical mismatch between the acoustic model and the vocoder as they are commonly separately learned and work on different distributions of representation, leading to artifacts in the synthesized speech. In this work, different from using predesigned intermediate representation in most previous works, we propose to use VAE combining with GAN to learn a latent representation directly from speech and then utilize a flow-based acoustic model to model the distribution of the latent representation from text. In this way, the mismatch problem is migrated as the two stages work on the same distribution. Results demonstrate that the flow-based acoustic model can exactly model the distribution of our learned speech representation and the proposed TTS framework, namely Glow-WaveGAN, can produce high fidelity speech outperforming the state-of-the-art GAN-based model.</p>
 
 <h2><p class="toc_title">Contents</p></h2>
 <div id="toc_container">
@@ -43,12 +43,12 @@
   <ul>
     <li><a href="#1.1">Waveform reconstruction</a></li>
     <li><a href="#1.2">End-to-end Speech Synthesis</a></li>
-    <li><a href="#1.3">Synthesis for unseen speaekrs</a></li>
   </ul>
   <li><a href="#2">Multi speaker (VCTK)</a></li>
   <ul>
     <li><a href="#2.1">Reconstruction to waveform</a></li>
     <li><a href="#2.2">End-to-end Speech Synthesis</a></li>
+    <li><a href="#2.3">Synthesis for unseen speaekrs</a></li>
   </ul>
   <li><a href="#3">Additional comparison</a></li>
   <ul>
@@ -224,7 +224,7 @@ Annotation: The <b>inner-GAN</b> indicates that the decoder in our VAE and the d
   </tbody>
 </table>
 <br>
-<a name="1.3"><h3>1.3 Synthesis for unseen speaekrs</h3></a>
+<a name="2.3"><h3>2.3 Synthesis for unseen speaekrs</h3></a>
 <table>
   <thead>
     <tr>
