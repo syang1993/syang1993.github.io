@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<!-- saved from url=(0033)https://syang1993.github.io/test/ -->
 <html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>TODO: title</title>
+<title>Controllable Context-aware Conversational Speech Synthesis</title>
 <meta name="generator" content="Jekyll v3.9.0">
-<meta property="og:title" content="TODO: title">
+<meta property="og:title" content="Controllable Context-aware Conversational Speech Synthesis">
 <meta property="og:locale" content="en_US">
-<link rel="canonical" href="https://syang1993.github.io/test/">
-<meta property="og:url" content="https://syang1993.github.io/test/">
+<link rel="canonical" href="https://syang1993.github.io/spon_tts/">
+<meta property="og:url" content="https://syang1993.github.io/spon_tts/">
 <meta name="twitter:card" content="summary">
 <!-- End Jekyll SEO tag -->
 
@@ -26,76 +25,171 @@
     </section>
 
     <section class="main-content">
-      <h1 id="-vara-tts-non-autoregressive-text-to-speech-synthesis-based-on-very-deep-vae-with-residual-attention-"><center> TODO: title </center></h1>
+      <h1 id=""><center> Controllable Context-aware Conversational Speech Synthesis </center></h1>
 
-<center> TODO: author </center>
+<center> Jian Cong<sup>1</sup>, Shan Yang<sup>2</sup>, Na Hu<sup>2</sup>, Guangzhi Li<sup>2</sup>, Lei Xie<sup>1</sup>, Dan Su<sup>2</sup> </center>
+<center> <sup>1</sup> Audio, Speech and Language Processing Group (ASLP@NPU), School of Computer Science, Northwestern Polytechnical University, Xi'an, China</center>
+<center> <sup>2</sup> Tencent AI Lab, China</center>
+
 
 <h2 id="abstract">Abstract</h2>
-<p>TODO: abstract.</p>
+<p>In spoken conversation, spontaneous behavior is a common phenomenon and conversational partner tend to align features of their speech with their interlocutor which is known as entrainment. To produce human-like conversations, we propose a unified controllable spontaneous conversational speech synthesis framework to model the above two phenomena. Specifically, we use explicit labels to represent two typical spontaneous behaviors filled-pause and prolongation in the acoustic model and develop a neural network based predictor to predict the occurrences of the two behaviors from text. We subsequently develop an algorithm based on the predictor to control the occurrence frequency of the behaviors, making th synthesized speech varies in disfluency. To model the speech entrainment at acoustic level, we utilize a context acoustic encoder to extract a global style embedding from the previous speech conditioning on the synthesizing of current speech. Furthermore, since the current and previous utterances belong to different speakers in a conversation, we add a domain adversarial training module, eliminating the speaker-related information in the acoustic encoder while maintaining the style-related information. Experiments show that our proposed approach can synthesize realistic conversations and control the occurrences of the spontaneous behaviors naturally.</p>
 
+<h2><p class="toc_title">Contents</p></h2>
+<div id="toc_container">
+<ul>
+  <li><a href="#1">Evaluation on acoustic model</a></li>
+  <li><a href="#2">Controllable for the occurrence frequency of the spontaneous behaviors</a></li>
+  <li><a href="#3">Comparison of predicted label and random label</a></li>
+</ul>
+</div>
 
-<h2>Item 1</h2>
-
-<p>Text:</p>
-
-<audio src="audio.wav" controls="" preload=""></audio>
-
-<h2>Item 2</h2>
-
-<p>Text 2</p>
-
+<a name="1"><h2>1. Evaluation on acoustic model</h2></a>
+<p>
+M1: baseline Taco-like model without spontaneous labels. <br>
+M2: baseline model with explicit spontaneous labels.  <br>
+M3: M2 with extra BERT encoder.  <br>
+M4: M3 with audio context encoder to model entrainment. <br>
+</p>
 <table>
   <thead>
     <tr>
-      <th style="text-align: center"><strong>center</strong></th>
-      <th style="text-align: right"><strong>right</strong></th>
-      <th style="text-align: left"><strong>left</strong></th>
+      <th style="text-align: center"><strong>M1</strong></th>
+      <th style="text-align: center"><strong>M2</strong></th>
+      <th style="text-align: center"><strong>M3</strong></th>
+      <th style="text-align: center"><strong>M4</strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
+      <td colspan="4" style="text-align: center"><span>A: 这个景点在哪儿？ B:嗯[filed-pause]这个也不远，就在东城区景山前街那边。<span></td>
+    </tr>
+    
+      <td style="text-align: left"><audio src="samples/M1/ref_A0368000006.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/M2/ref_A0368000006.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/M3/ref_A0368000006.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/M4/ref_A0368000006.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td colspan="4" style="text-align: center"><span>A:哎[filled-pause]，那个[prolongation]学校的事儿，你帮我问了吗。B: 呃[pl+fp]，学校的事[prolongation]，我朋友说他过几天才有空，嗯[pl+fp]你别太担心了<span></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/M1/ref_A0019000001.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/M2/ref_A0019000001.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/M3/ref_A0019000001.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/M4/ref_A0019000001.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
+    <td colspan="4" style="text-align: center"><span>A: 你哪儿不舒服啊? B:我跟你说过，我感冒了。<span></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/M1/ref_A0132000001.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/M2/ref_A0132000001.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/M3/ref_A0132000001.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/M4/ref_A0132000001.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
+    </tr>
+    <td colspan="4" style="text-align: center"><span>A: 你就别装了。B: 哎，我原本不想告诉你的，我的脑袋里啊长了个瘤。<span></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/M1/ref_A0132000004.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/M2/ref_A0132000004.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/M3/ref_A0132000004.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/M4/ref_A0132000004.wavernn.wav" controls="" preload=""></audio></td>
     </tr>
   </tbody>
 </table>
-
-<h2>Item 3</h2>
-
-<p> Description</p>
+<br>
+<br>
+<a name="2"><h2>2. Controllable for the occurrence frequency of the spontaneous behaviors</h2></a>
+<p>
+  The synthesize samples with <font color=red>different occurrence frequency</font> of spontaneous behaviors.
+</p>
 <table>
   <thead>
     <tr>
-      <th style="text-align: left"><strong>method 1</strong></th>
-      <th style="text-align: left"><strong>method 2</strong></th>
-      <th style="text-align: left"><strong>method 3</strong></th>
+      <th style="text-align: center"><strong>0.1</strong></th>
+      <th style="text-align: center"><strong>0.3</strong></th>
+      <th style="text-align: center"><strong>0.5</strong></th>
+      <th style="text-align: center"><strong>0.7</strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.1/A0019000001.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.3/A0019000001.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.5/A0019000001.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.7/A0019000001.wavernn.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="audio.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.1/A0132000002.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.3/A0132000002.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.5/A0132000002.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.7/A0132000002.wavernn.wav" controls="" preload=""></audio></td>
     </tr>
-
+    <tr>
+      <td style="text-align: left"><audio src="samples/frequency/0.1/A0368000007.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.3/A0368000007.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.5/A0368000007.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.7/A0368000007.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/frequency/0.1/A0337000007.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.3/A0337000007.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.5/A0337000007.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/frequency/0.7/A0337000007.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
   </tbody>
 </table>
-
-
-
+<br>
+<br>
+<a name="3"><h2>3. Comparison of predicted label and random label</h2></a>
+<p>
+  The synthesized samples with <font color=red>predicted</font> or <font color=red>random</font> spontaneous behaviors.
+</p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Predicted Label</strong></th>
+      <th style="text-align: center"><strong>Random Label</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/frequency/0.3/A0014000002.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/random/0.3/A0014000002.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/frequency/0.5/A0019000001.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/random/0.5/A0019000001.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/frequency/0.3/A0038000005.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/random//0.3/A0038000005.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/frequency/0.6/A0051000004.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/random/0.6/A0051000004.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/frequency/0.6/A0103000005.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/random/0.6/A0103000005.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/frequency/0.4/A0132000004.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/random/0.4/A0132000004.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/frequency/0.4/A0368000003.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/random/0.4/A0368000003.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><audio src="samples/frequency/0.4/A0368000006.wavernn.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="samples/random/0.4/A0368000006.wavernn.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
       <footer class="site-footer">
-        
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
       </footer>
     </section>
-
-    
-  
-
 </body></html>
